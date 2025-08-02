@@ -10,6 +10,9 @@ import c from './assets/3.jpg';
 import d from './assets/cricket.jpg';
 import e from './assets/lion.jpg';
 import f from './assets/train.jpg';
+import g from './assets/sunset.jpeg';
+import h from './assets/beach.jpeg';
+import i from './assets/mist.jpg';
 
 export default function GalleryPage() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -21,15 +24,15 @@ export default function GalleryPage() {
     { src: nature, alt: "Water" },
     { src: animal, alt: "Wildlife" },
     { src: a, alt: "Landscape" },
-    { src: b, alt: "Portrait" },
+    { src: h, alt: "Portrait" },
     { src: c, alt: "Urban" },
     { src: nature1, alt: "Macro" },
     { src: d, alt: "Mountains" },
     { src: e, alt: "Beach" },
     { src: f, alt: "Sunset" },
-    { src: "https://source.unsplash.com/featured/?forest", alt: "Forest" },
-    { src: "https://source.unsplash.com/featured/?night", alt: "Night" },
-    { src: "https://source.unsplash.com/featured/?desert", alt: "Desert" },
+    { src: g, alt: "Forest" },
+    { src: b, alt: "Night" },
+    { src: i, alt: "Desert" },
   ];
 
   const scrollToTop = () => {
