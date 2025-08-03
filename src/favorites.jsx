@@ -15,38 +15,32 @@ import g from './assets/sunset.jpeg';
 import h from './assets/beach.jpeg';
 import i from './assets/mist.jpg';
 
-  export default function GalleryPage({ favorites, setFavorites }) {
+const allPhotos = [
+  { src: nature, alt: "Water" },
+  { src: animal, alt: "Wildlife" },
+  { src: a, alt: "Landscape" },
+  { src: h, alt: "Portrait" },
+  { src: c, alt: "Urban" },
+  { src: nature1, alt: "Macro" },
+  { src: d, alt: "Mountains" },
+  { src: e, alt: "Beach" },
+  { src: f, alt: "Sunset" },
+  { src: g, alt: "Forest" },
+  { src: b, alt: "Night" },
+  { src: i, alt: "Desert" },
+];
+
+export default function FavoritesPage({ favorites, setFavorites }) {
   const [selectedImage, setSelectedImage] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(6);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
 
-
-  const photos = [
-    { src: nature, alt: "Water" },
-    { src: animal, alt: "Wildlife" },
-    { src: a, alt: "Landscape" },
-    { src: h, alt: "Portrait" },
-    { src: c, alt: "Urban" },
-    { src: nature1, alt: "Macro" },
-    { src: d, alt: "Mountains" },
-    { src: e, alt: "Beach" },
-    { src: f, alt: "Sunset" },
-    { src: g, alt: "Forest" },
-    { src: b, alt: "Night" },
-    { src: i, alt: "Desert" },
-  ];
+  const favoritePhotos = allPhotos.filter(photo => favorites.includes(photo.src));
 
   const toggleFavorite = (src) => {
     setFavorites((prev) =>
-      prev.includes(src)
-        ? prev.filter((item) => item !== src)
-        : [...prev, src]
+      prev.includes(src) ? prev.filter((item) => item !== src) : [...prev, src]
     );
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -95,55 +89,34 @@ import i from './assets/mist.jpg';
 
       {/* Heading */}
       <h1 className="text-5xl md:text-7xl font-serif tracking-widest uppercase text-center text-gray-800 mb-12 mt-8">
-        My Gallery
+        My Favorites
       </h1>
 
-      {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-        {photos.slice(0, visibleCount).map((photo, index) => (
-          <div
-            key={index}
-            className="relative overflow-hidden rounded-2xl shadow-lg group"
-          >
-            <img
-              src={photo.src}
-              alt={photo.alt}
-              onClick={() => setSelectedImage(photo.src)}
-              className={`w-full h-80 object-cover transform transition-transform duration-500 group-hover:scale-110 cursor-pointer ${
-                photo.alt === "Wildlife" ? "object-[center_25%]" : ""
-              }`}
-            />
-            <button
-              onClick={() => toggleFavorite(photo.src)}
-              onDoubleClick={() => toggleFavorite(photo.src)}
-              className={`absolute top-3 right-3 text-xl bg-black bg-opacity-50 rounded-full p-2 ${favorites.includes(photo.src) ? "text-red-500" : "text-white"}`}
-              title="Like"
+      {favoritePhotos.length === 0 ? (
+        <p className="text-center text-gray-500">No favorite images yet.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {favoritePhotos.map((photo, index) => (
+            <div
+              key={index}
+              className="relative overflow-hidden rounded-2xl shadow-lg group"
             >
-              <FaHeart />
-            </button>
-          </div>
-        ))}
-      </div>
-
-      {visibleCount < photos.length && (
-        <div className="flex justify-center mt-10">
-          <button
-            onClick={() => setVisibleCount(visibleCount + 6)}
-            className="px-6 py-3 bg-black text-white rounded-full text-lg font-semibold hover:bg-gray-800 transition"
-          >
-            View More
-          </button>
-        </div>
-      )}
-
-      {visibleCount >= photos.length && (
-        <div className="flex justify-center mt-10">
-          <button
-            onClick={scrollToTop}
-            className="px-6 py-3 bg-gray-800 text-white rounded-full text-lg font-semibold hover:bg-black transition"
-          >
-            Go to Top
-          </button>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                onClick={() => setSelectedImage(photo.src)}
+                className={`w-full h-80 object-cover transform transition-transform duration-500 group-hover:scale-110 cursor-pointer ${photo.alt === "Wildlife" ? "object-[center_25%]" : ""}`}
+              />
+              <button
+                onClick={() => toggleFavorite(photo.src)}
+                onDoubleClick={() => toggleFavorite(photo.src)}
+                className={`absolute top-3 right-3 text-white text-xl bg-black bg-opacity-50 rounded-full p-2 ${favorites.includes(photo.src) ? "text-red-500" : "text-white"}`}
+                title="Unlike"
+              >
+                <FaHeart />
+              </button>
+            </div>
+          ))}
         </div>
       )}
 
@@ -156,18 +129,29 @@ import i from './assets/mist.jpg';
               className="max-h-[90vh] max-w-[90vw] rounded-lg shadow-lg"
             />
             <button
-              onClick={() => setSelectedImage(null)}
-              className="absolute top-2 right-2 text-white text-2xl bg-black bg-opacity-50 rounded-full px-3 py-1 hover:bg-opacity-80"
-            >
-              &times;
-            </button>
+                onClick={() => setSelectedImage(null)}
+                className={`absolute top-3 right-3 text-white text-2xl bg-black bg-opacity-50 rounded-full px-3 py-1 hover:bg-opacity-80`}
+                >
+                &times;
+                </button>
+
           </div>
         </div>
       )}
+
+      {/* Go back to gallery */}
+      <div className="flex justify-center mt-10">
+        <Link
+          to="/gallery"
+          className="px-6 py-3 bg-gray-800 text-white rounded-full text-lg font-semibold hover:bg-black transition"
+        >
+          Back to Gallery
+        </Link>
+      </div>
 
       <footer className="text-center mt-16 text-gray-500 text-sm">
         © {new Date().getFullYear()} Yuvan. All rights reserved.
       </footer>
     </div>
   );
-}  
+}
