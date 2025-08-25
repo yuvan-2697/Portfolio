@@ -1,33 +1,38 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Portfolio from "./Portfolio";
-import GalleryPage from "./GalleryPage";
-import FavoritesPage from "./favorites";
+// App.jsx
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./HomePage";
+import Showreel from "./Showreel";
+import WebSeries from './WebSeries';
+import Movies from './Movies';
+import Commercials from './Commercials';
+import About from './About';
+import Kaiyum from './Kaiyum';
+import Bhk from './Bhk';
+import Memeboys from './Memeboys';
+import Five from './Five';
+import Luckyman from './Luckyman';
+import Boo from './Boo';
+import Kali from './Kali';
+import Mission from './Mission';
 
 function App() {
-  const [favorites, setFavorites] = useState(() => {
-    // Load from localStorage initially
-    const stored = localStorage.getItem("favorites");
-    return stored ? JSON.parse(stored) : [];
-  });
-
-  // Sync favorites to localStorage on any change
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
-
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Portfolio />} />
-        <Route
-          path="/gallery"
-          element={<GalleryPage favorites={favorites} setFavorites={setFavorites} />}
-        />
-        <Route
-          path="/favorites"
-          element={<FavoritesPage favorites={favorites} setFavorites={setFavorites} />}
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/showreel" element={<Showreel />} />
+        <Route path="/webseries" element={<WebSeries />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/commercials" element={<Commercials />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/kaiyum" element={<Kaiyum />} />
+        <Route path="/bhk" element={<Bhk />} />
+        <Route path="/memeboys" element={<Memeboys />} />
+        <Route path="/five" element={<Five />} />
+        <Route path="/luckyman" element={<Luckyman />} />
+        <Route path="/boo" element={<Boo />} />
+        <Route path="/kali" element={<Kali />} />
+        <Route path="/mission" element={<Mission />} />
       </Routes>
     </Router>
   );
