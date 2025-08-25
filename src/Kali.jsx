@@ -48,7 +48,7 @@ export default function Kali() {
           Kaliyugam
         </h1>
 
-        {/* YouTube Video Embed */}
+        {/* YouTube Video Embedding */}
         <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
           <iframe
             className="w-full h-full"
