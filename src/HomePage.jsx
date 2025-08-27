@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import b from './assets/home1.png';
 import web1 from './assets/ws.png';
@@ -7,6 +7,7 @@ import web3 from './assets/comm.jpg';
 
 export default function Home() {
   const location = useLocation(); // to highlight active tab
+
   const categories = [
     { name: "Webseries", image: web1, link: "/webseries" },
     { name: "Movies", image: web2, link: "/movies" },
@@ -30,89 +31,85 @@ export default function Home() {
       <header className="absolute top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
         <Link
           to="/"
-          className="text-sm tracking-[0.35em] uppercase text-white/80 hover:text-white transition font-sans"
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
         >
           RS
         </Link>
 
         <nav className="flex space-x-6">
-          <Link
-            to="/"
-            className={`text-white/70 uppercase text-sm transition-colors ${
-              location.pathname === "/" ? "border-b-2 border-white" : "hover:text-white"
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/webseries"
-            className={`text-white/70 uppercase text-sm transition-colors ${
-              location.pathname === "/webseries" ? "border-b-2 border-white" : "hover:text-white"
-            }`}
-          >
-            Webseries
-          </Link>
-          <Link
-            to="/movies"
-            className={`text-white/70 uppercase text-sm transition-colors ${
-              location.pathname === "/movies" ? "border-b-2 border-white" : "hover:text-white"
-            }`}
-          >
-            Movies
-          </Link>
-          <Link
-            to="/commercials"
-            className={`text-white/70 uppercase text-sm transition-colors ${
-              location.pathname === "/commercials" ? "border-b-2 border-white" : "hover:text-white"
-            }`}
-          >
-            Commercials
-          </Link>
-          <Link
-            to="/about"
-            className={`text-white/70 uppercase text-sm transition-colors ${
-              location.pathname === "/about" ? "border-b-2 border-white" : "hover:text-white"
-            }`}
-          >
-            About
-          </Link>
+          {["/", "/webseries", "/movies", "/commercials", "/about"].map((path, index) => {
+            const names = ["Home", "Webseries", "Movies", "Commercials", "About"];
+            return (
+              <Link
+                key={names[index]}
+                to={path}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className={`uppercase text-sm tracking-[0.25em] transition-colors ${
+                  location.pathname === path
+                    ? "text-white border-b-2 border-white"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {names[index]}
+              </Link>
+            );
+          })}
         </nav>
       </header>
 
       {/* Hero Section */}
       <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-88px)] text-center px-6">
-        <h1 className="text-5xl md:text-7xl font-serif tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 animate-fade-in-slow">
+        <h1
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-5xl md:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 animate-fade-in-slow"
+        >
           Ribhu Sarma
         </h1>
-        <span className="text-base md:text-lg tracking-[0.35em] uppercase text-white/70 mb-6">
+
+        <span
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-base md:text-lg tracking-[0.35em] uppercase text-white/70 mb-6"
+        >
           Cinematographer
         </span>
+
         <div className="mx-auto h-px w-24 bg-white/40 mb-10" />
-        <p className="max-w-xl text-white/70 mb-12">
+
+        {/* Static Paragraph */}
+        <p
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="max-w-xl text-white/70 mb-12 leading-relaxed"
+        >
           Crafting images with light, movement, and emotion—across films, commercials, and documentaries.
         </p>
 
         {/* Grids with text below and link */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
-          {categories.map((cat) => (
-            <Link
-              key={cat.name}
-              to={cat.link}
-              className="flex flex-col items-center group cursor-pointer"
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
+        {categories.map((cat, idx) => (
+          <Link
+            key={cat.name}
+            to={cat.link}
+            className="flex flex-col items-center group cursor-pointer transform transition duration-500 ease-in-out hover:-translate-y-2 hover:scale-105"
+            style={{ animation: `fadeInUp 0.6s ease forwards`, animationDelay: `${idx * 0.2}s`, opacity: 0 }}
+          >
+            {cat.image && (
+              <img
+                src={cat.image}
+                alt={cat.name}
+                className="h-64 w-64 object-cover rounded-2xl shadow-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
+              />
+            )}
+            <span
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="mt-4 text-lg md:text-xl font-bold tracking-[0.35em] uppercase text-white/90 transition group-hover:text-white"
             >
-              {cat.image && (
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="h-64 w-64 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
-                />
-              )}
-              <span className="mt-4 text-lg md:text-xl font-bold tracking-[0.35em] uppercase text-white/90 transition group-hover:text-white">
-                {cat.name}
-              </span>
-            </Link>
-          ))}
-        </div>
+              {cat.name}
+            </span>
+          </Link>
+        ))}
+      </div>
+
       </main>
 
       {/* Footer */}

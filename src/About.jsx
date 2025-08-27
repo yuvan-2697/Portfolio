@@ -52,8 +52,12 @@ export default function About() {
       <div className="fixed inset-0 bg-black/70 -z-5" />
 
       {/* Header */}
-      <header className="w-full z-20 px-6 py-6 flex justify-between items-center bg-black/30 backdrop-blur-md fixed top-0">
-        <Link to="/" className="text-sm tracking-[0.35em] uppercase text-white/80 hover:text-white transition font-sans">
+      <header className="w-full z-20 px-6 py-6 flex justify-between items-center fixed top-0">
+        <Link 
+          to="/" 
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
+        >
           RS
         </Link>
         <nav className="flex space-x-6">
@@ -61,8 +65,11 @@ export default function About() {
             <Link
               key={tab.name}
               to={tab.link}
-              className={`relative text-white/70 uppercase text-sm transition-colors pb-1 ${
-                location.pathname === tab.link ? "text-white font-semibold border-b-2 border-white" : "hover:text-white"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className={`uppercase text-sm tracking-[0.25em] transition-colors pb-1 ${
+                location.pathname === tab.link
+                  ? "text-white border-b-2 border-white"
+                  : "text-white/70 hover:text-white"
               }`}
             >
               {tab.name}
@@ -91,13 +98,27 @@ export default function About() {
             ref={textRef}
             className="opacity-0 translate-y-10 transition-all duration-700"
           >
-            <h1 className="text-5xl md:text-6xl font-serif tracking-widest uppercase mb-6 animate-gradient-text">
+            <h1
+              style={{ fontFamily: "'Anton', sans-serif" }}
+              className="text-5xl md:text-7xl tracking-widest uppercase mb-6 bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent animate-gradient-text"
+            >
               About Me
             </h1>
-            <p className="text-white/70 text-lg md:text-xl mb-6">
-              I am Ribhu Sarma, a cinematographer passionate about capturing stories through light, movement, and emotion. My work spans films, commercials, and documentaries, each crafted to leave a lasting impression.
+            <p
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed"
+            >
+              Hey there! I’m Ribhu Sarma—an engineering grad from Chennai who accidentally fell in love with cinematography (don’t tell my circuits!). I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
+            </p><p style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
+              When I’m not filming, you’ll find me hunting for the perfect cup of coffee, devouring anything edible, or catching up on my favorite hobby—sleeping like it’s an art form.. I’m all about storytelling, good vibes, and connecting with fellow humans who love a little chaos, creativity, and caffeine.
+
+              Let’s create something unforgettable—or at least have a coffee while we try.
             </p>
-            <p className="text-white/70 text-lg md:text-xl">
+            <p
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="text-white/70 text-lg md:text-xl leading-relaxed"
+            >
               You can reach me through the contact details below—I’d love to connect!
             </p>
           </div>
@@ -112,7 +133,7 @@ export default function About() {
                 target="_blank"
                 rel="noreferrer"
                 className="opacity-0 translate-x-10 flex items-center gap-4 text-right text-lg md:text-xl font-semibold transition-all duration-700 hover:text-white"
-                style={{ transitionDelay: `${idx * 200}ms` }}
+                style={{ transitionDelay: `${idx * 200}ms`, fontFamily: "'Montserrat', sans-serif" }}
               >
                 <span className="text-2xl md:text-3xl">{contact.icon}</span>
                 <span>{contact.value}</span>
@@ -123,7 +144,7 @@ export default function About() {
       </main>
 
       {/* Footer */}
-      <footer className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60">
+      <footer className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60" style={{ fontFamily: "'Montserrat', sans-serif" }}>
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
 

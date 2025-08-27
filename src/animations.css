@@ -1,0 +1,14 @@
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(270deg, #d1d5db, #ffffff, #d1d5db); /* gray-300 to white */
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 6s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

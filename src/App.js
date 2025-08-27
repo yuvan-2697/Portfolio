@@ -14,6 +14,8 @@ import Luckyman from './Luckyman';
 import Boo from './Boo';
 import Kali from './Kali';
 import Mission from './Mission';
+import './animations.css';
+
 
 function App() {
   return (

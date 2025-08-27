@@ -14,12 +14,13 @@ export default function Boo() {
 
   return (
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
-      
+
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center bg-black/80 backdrop-blur-md">
+      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
         <Link
           to="/"
-          className="text-sm tracking-[0.35em] uppercase text-white/80 hover:text-white transition font-sans"
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
         >
           RS
         </Link>
@@ -29,10 +30,11 @@ export default function Boo() {
             <Link
               key={tab.name}
               to={tab.link}
-              className={`text-white/70 uppercase text-sm transition-colors pb-1 ${
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className={`uppercase text-sm tracking-[0.25em] transition-colors pb-1 ${
                 location.pathname === tab.link
-                  ? "border-b-2 border-white font-semibold text-white"
-                  : "hover:text-white"
+                  ? "text-white font-semibold border-b-2 border-white"
+                  : "text-white/70 hover:text-white"
               }`}
             >
               {tab.name}
@@ -43,8 +45,11 @@ export default function Boo() {
 
       {/* Main Content */}
       <main className="relative z-10 pt-[120px] px-6 pb-16 max-w-5xl mx-auto flex flex-col items-center gap-12 text-center">
-        
-        <h1 className="text-5xl md:text-6xl font-serif tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow">
+
+        <h1
+          style={{ fontFamily: "'Anton', sans-serif" }}
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+        >
           Boo
         </h1>
 
@@ -60,13 +65,17 @@ export default function Boo() {
           ></iframe>
         </div>
 
-        <p className="text-white/70 text-lg md:text-xl mb-6 max-w-3xl">
+        <p
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-white/70 text-lg md:text-xl mb-6 max-w-3xl"
+        >
           Boo – Assistant Cinematographer. A visually immersive piece capturing character and atmosphere through thoughtful framing, lighting, and direction—highlighting my role in achieving cinematic nuance.
         </p>
 
         {/* Back Link */}
         <Link
           to="/movies"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="mt-4 inline-block px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md text-white font-semibold hover:bg-white/20 transition"
         >
           ← Back to Movies
@@ -74,7 +83,10 @@ export default function Boo() {
       </main>
 
       {/* Footer */}
-      <footer className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60">
+      <footer
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60"
+      >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
     </div>
