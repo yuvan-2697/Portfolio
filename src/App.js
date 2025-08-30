@@ -1,7 +1,7 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./HomePage";
-import Showreel from "./Showreel";
+
 import WebSeries from './WebSeries';
 import Movies from './Movies';
 import Commercials from './Commercials';
@@ -22,7 +22,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/showreel" element={<Showreel />} />
+        
         <Route path="/webseries" element={<WebSeries />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/commercials" element={<Commercials />} />
