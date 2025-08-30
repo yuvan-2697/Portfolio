@@ -1,11 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FiMail, FiPhone, FiInstagram, FiMenu, FiX } from "react-icons/fi";
 import portrait from './assets/dp.jpeg';
 import aboutBg from './assets/about.jpg';
-import { FiMail, FiPhone, FiInstagram } from "react-icons/fi";
 
 export default function About() {
-  const location = useLocation(); 
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const textRef = useRef(null);
   const contactRef = useRef([]);
 
@@ -43,16 +44,12 @@ export default function About() {
   return (
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white">
 
-      {/* Background Image */}
-      <div
-        className="fixed inset-0 bg-cover bg-center -z-10"
-        style={{ backgroundImage: `url(${aboutBg})` }}
-      />
-      {/* Dark overlay added */}
+      {/* Background */}
+      <div className="fixed inset-0 bg-cover bg-center -z-10" style={{ backgroundImage: `url(${aboutBg})` }} />
       <div className="fixed inset-0 bg-black/70 -z-5" />
 
       {/* Header */}
-      <header className="w-full z-20 px-6 py-6 flex justify-between items-center fixed top-0">
+      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
         <Link 
           to="/" 
           style={{ fontFamily: "'Anton', sans-serif" }}
@@ -60,22 +57,29 @@ export default function About() {
         >
           RS
         </Link>
-        <nav className="flex space-x-6">
-          {tabs.map((tab) => (
-            <Link
-              key={tab.name}
-              to={tab.link}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className={`uppercase text-sm tracking-[0.25em] transition-colors pb-1 ${
-                location.pathname === tab.link
-                  ? "text-white border-b-2 border-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              {tab.name}
-            </Link>
-          ))}
-        </nav>
+
+        {/* Responsive Dropdown */}
+        <div className="relative">
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-3xl focus:outline-none">
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
+
+          <div className={`absolute right-0 mt-3 w-48 bg-black/90 rounded-xl shadow-lg flex flex-col py-2 z-30 transform transition-all duration-300 ease-in-out origin-top ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"}`}>
+            {tabs.map((tab) => (
+              <Link
+                key={tab.name}
+                to={tab.link}
+                onClick={() => setMenuOpen(false)}
+                className={`px-4 py-2 text-white/80 hover:text-white uppercase tracking-[0.25em] transition-colors ${
+                  location.pathname === tab.link ? "font-semibold text-white" : ""
+                }`}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {tab.name}
+              </Link>
+            ))}
+          </div>
+        </div>
       </header>
 
       {/* Main Content */}
@@ -94,31 +98,22 @@ export default function About() {
         <div className="flex-1 flex flex-col gap-12">
 
           {/* Bio */}
-          <div
-            ref={textRef}
-            className="opacity-0 translate-y-10 transition-all duration-700"
-          >
+          <div ref={textRef} className="opacity-0 translate-y-10 transition-all duration-700">
             <h1
               style={{ fontFamily: "'Anton', sans-serif" }}
               className="text-5xl md:text-7xl tracking-widest uppercase mb-6 bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent animate-gradient-text"
             >
               About Me
             </h1>
-            <p
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed"
-            >
-              Hey there! I’m Ribhu Sarma, an engineering grad from Chennai who accidentally fell in love with cinematography (don’t tell my circuits!). I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
-            </p><p style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
-              When I’m not filming, you’ll find me hunting for the perfect cup of coffee, devouring anything edible, or catching up on my favorite hobby—sleeping like it’s an art form.. I’m all about storytelling, good vibes, and connecting with fellow humans who love a little chaos, creativity, and caffeine.
-
-              Let’s create something unforgettable, or at least have a coffee while we try.
+            <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
+              Hey there! I’m Ribhu Sarma, an engineering grad from Chennai who accidentally fell in love with cinematography. I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
             </p>
-            
+            <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
+              When I’m not filming, you’ll find me hunting for the perfect cup of coffee, devouring anything edible, or catching up on my favorite hobby—sleeping like it’s an art form. I’m all about storytelling, good vibes, and connecting with fellow humans who love a little chaos, creativity, and caffeine.
+            </p>
           </div>
 
-          {/* Contact Details */}
+          {/* Contacts */}
           <div className="flex flex-col items-end gap-6 mt-22">
             {contacts.map((contact, idx) => (
               <a
@@ -143,23 +138,22 @@ export default function About() {
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
 
-      {/* Extra CSS */}
-      <style>
-        {`
-          @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-          .animate-gradient-text {
-            background: linear-gradient(270deg, #ccc, #fff, #ccc);
-            background-size: 600% 600%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientAnimation 8s ease infinite;
-          }
-        `}
-      </style>
+      {/* Gradient Animation */}
+      <style>{`
+        @keyframes gradientAnimation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient-text {
+          background: linear-gradient(270deg, #ccc, #fff, #ccc);
+          background-size: 600% 600%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientAnimation 8s ease infinite;
+        }
+      `}</style>
+
     </div>
   );
 }

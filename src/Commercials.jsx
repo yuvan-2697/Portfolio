@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import cg from './assets/cg.png';
 import nalli from './assets/nalli.png';
@@ -6,9 +6,11 @@ import nn from './assets/nalli2.png';
 import nac from './assets/nac.png';
 import dug from './assets/dug.png';
 import commBg from './assets/commbg.jpg';
+import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Commercials() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const projects = [
     { title: "CasaGrande", image: cg, description: "A short description of CasaGrande covering its main plot and critical acclaim.", link: "https://link-to-project-one.com" },
@@ -30,8 +32,8 @@ export default function Commercials() {
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white">
 
       {/* Background */}
-      <div className="fixed inset-0 bg-cover bg-center -z-10" style={{ backgroundImage: `url(${commBg})` }} />
-      <div className="fixed inset-0 bg-black/70 -z-5" />
+      <div className="fixed inset-0 bg-cover bg-center -z-20" style={{ backgroundImage: `url(${commBg})` }} />
+      <div className="fixed inset-0 bg-black/70 -z-10" />
 
       {/* Header */}
       <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
@@ -42,22 +44,39 @@ export default function Commercials() {
         >
           RS
         </Link>
-        <nav className="flex space-x-6">
-          {tabs.map((tab) => (
-            <Link
-              key={tab.name}
-              to={tab.link}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className={`uppercase text-sm tracking-[0.25em] transition-colors pb-1 ${
-                location.pathname === tab.link
-                  ? "text-white border-b-2 border-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              {tab.name}
-            </Link>
-          ))}
-        </nav>
+
+        {/* Dropdown Toggle */}
+        <div className="relative">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white text-3xl focus:outline-none"
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
+
+          {/* Dropdown Menu */}
+          <div
+            className={`absolute right-0 mt-3 w-48 bg-black/90 rounded-xl shadow-lg flex flex-col py-2 z-30 transform transition-all duration-300 ease-in-out origin-top ${
+              menuOpen
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-5 opacity-0 pointer-events-none"
+            }`}
+          >
+            {tabs.map((tab) => (
+              <Link
+                key={tab.name}
+                to={tab.link}
+                onClick={() => setMenuOpen(false)}
+                className={`px-4 py-2 text-white/80 hover:text-white uppercase tracking-[0.25em] transition-colors ${
+                  location.pathname === tab.link ? "font-semibold text-white" : ""
+                }`}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {tab.name}
+              </Link>
+            ))}
+          </div>
+        </div>
       </header>
 
       {/* Page Heading */}
@@ -72,7 +91,7 @@ export default function Commercials() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="max-w-2xl mx-auto text-white/70 mb-12 leading-relaxed"
         >
-          A collection of my commercials. Hover to read description, click to view details.
+          Crafted visuals that elevate brands. Click to view each project.
         </p>
 
         {/* Projects Grid */}

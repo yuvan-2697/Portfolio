@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { FiMenu, FiX } from "react-icons/fi";
 
 export default function Bhk() {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const tabs = [
     { name: "Home", link: "/" },
@@ -24,22 +26,39 @@ export default function Bhk() {
         >
           RS
         </Link>
-        <nav className="flex space-x-6">
-          {tabs.map((tab) => (
-            <Link
-              key={tab.name}
-              to={tab.link}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className={`uppercase text-sm tracking-[0.25em] transition-colors pb-1 ${
-                location.pathname === tab.link
-                  ? "text-white font-semibold border-b-2 border-white"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              {tab.name}
-            </Link>
-          ))}
-        </nav>
+
+        {/* Dropdown Toggle */}
+        <div className="relative">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-white text-3xl focus:outline-none"
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
+
+          {/* Dropdown Menu */}
+          <div
+            className={`absolute right-0 mt-3 w-48 bg-black/90 rounded-xl shadow-lg flex flex-col py-2 z-30 transform transition-all duration-300 ease-in-out origin-top ${
+              menuOpen
+                ? "translate-y-0 opacity-100"
+                : "-translate-y-5 opacity-0 pointer-events-none"
+            }`}
+          >
+            {tabs.map((tab) => (
+              <Link
+                key={tab.name}
+                to={tab.link}
+                onClick={() => setMenuOpen(false)}
+                className={`px-4 py-2 text-white/80 hover:text-white uppercase tracking-[0.25em] transition-colors ${
+                  location.pathname === tab.link ? "font-semibold text-white" : ""
+                }`}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                {tab.name}
+              </Link>
+            ))}
+          </div>
+        </div>
       </header>
 
       {/* Main Content */}
@@ -58,7 +77,6 @@ export default function Bhk() {
           Associate Cinematographer
         </h2>
 
-
         {/* YouTube Video */}
         <div className="w-full max-w-3xl aspect-video mb-6 rounded-2xl overflow-hidden shadow-2xl">
           <iframe
@@ -75,7 +93,7 @@ export default function Bhk() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6"
         >
-           A captivating story showcasing light, movement, and emotion. This project highlights my role in cinematography and collaboration with the team to bring the narrative to life.
+          A captivating story showcasing light, movement, and emotion. This project highlights my role in cinematography and collaboration with the team to bring the narrative to life.
         </p>
 
         {/* Back Link */}
@@ -89,7 +107,10 @@ export default function Bhk() {
       </main>
 
       {/* Footer */}
-      <footer style={{ fontFamily: "'Montserrat', sans-serif" }} className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60">
+      <footer
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60"
+      >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
     </div>
