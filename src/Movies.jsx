@@ -12,8 +12,8 @@ export default function Movies() {
   const projects = [
     { title: "Kaliyugam", image: kali, description: "Assistant Cinematographer", link: "/kali" },
     { title: "Boo", image: boo, description: "Assistant Cinematographer", link: "/boo" },
-    { title: "Lucky Man", image: lucky, description: "Assistant Cinematographer", link: "/luckyman" },
-    { title: "Mission", image: miss, description: "Assistant Cinematographer", link: "/mission" },
+    { title: "Lucky Man", image: lucky, description: "Associate Cinematographer", link: "/luckyman" },
+    { title: "Mission", image: miss, description: "Associate Cinematographer", link: "/mission" },
   ];
 
   const tabs = [
