@@ -81,10 +81,8 @@ export default function Movies() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {projects.map((proj) => (
             <div key={proj.title} className="flex flex-col items-center group relative">
-              <a
-                href={proj.link}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                to={proj.link}
                 className="relative w-full rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
               >
                 <img
@@ -95,7 +93,7 @@ export default function Movies() {
                 <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-6 text-center">
                   <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-white text-base md:text-lg leading-relaxed">{proj.description}</p>
                 </div>
-              </a>
+              </Link>
 
               <span
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
