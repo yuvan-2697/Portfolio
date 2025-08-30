@@ -48,7 +48,7 @@ export default function About() {
         className="fixed inset-0 bg-cover bg-center -z-10"
         style={{ backgroundImage: `url(${aboutBg})` }}
       />
-      {/* Dark overlay */}
+      {/* Dark overlay added */}
       <div className="fixed inset-0 bg-black/70 -z-5" />
 
       {/* Header */}
