@@ -108,23 +108,18 @@ export default function About() {
               style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed"
             >
-              Hey there! I’m Ribhu Sarma—an engineering grad from Chennai who accidentally fell in love with cinematography (don’t tell my circuits!). I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
+              Hey there! I’m Ribhu Sarma, an engineering grad from Chennai who accidentally fell in love with cinematography (don’t tell my circuits!). I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
             </p><p style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
               When I’m not filming, you’ll find me hunting for the perfect cup of coffee, devouring anything edible, or catching up on my favorite hobby—sleeping like it’s an art form.. I’m all about storytelling, good vibes, and connecting with fellow humans who love a little chaos, creativity, and caffeine.
 
-              Let’s create something unforgettable—or at least have a coffee while we try.
+              Let’s create something unforgettable, or at least have a coffee while we try.
             </p>
-            <p
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-white/70 text-lg md:text-xl leading-relaxed"
-            >
-              You can reach me through the contact details below—I’d love to connect!
-            </p>
+            
           </div>
 
           {/* Contact Details */}
-          <div className="flex flex-col items-end gap-6 mt-24">
+          <div className="flex flex-col items-end gap-6 mt-22">
             {contacts.map((contact, idx) => (
               <a
                 key={contact.label}

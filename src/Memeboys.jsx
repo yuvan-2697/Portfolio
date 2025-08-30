@@ -48,10 +48,16 @@ export default function Memeboys() {
 
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-0 animate-fade-in-slow"
         >
           Meme Boys
         </h1>
+        <h2
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
+        >
+          Associate Cinematographer
+        </h2>
 
         {/* YouTube Video */}
         <div className="w-full max-w-3xl aspect-video mb-6 rounded-2xl overflow-hidden shadow-2xl">
@@ -69,7 +75,7 @@ export default function Memeboys() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6"
         >
-          "Meme Boys" – Associate Cinematographer. This series blends humor with visual storytelling, where my work behind the camera supported the comedic timing and vibrant atmosphere of the project.
+          Four college students run an anonymous meme page that sparks a revolution by making jokes about their oppressive college administration.
         </p>
 
         {/* Back Link */}

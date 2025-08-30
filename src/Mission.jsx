@@ -48,10 +48,17 @@ export default function Mission() {
 
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-0 animate-fade-in-slow"
         >
           Mission
         </h1>
+        <h2
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
+        >
+          Assistant Cinematographer
+        </h2>
+
 
         {/* YouTube Video Embed */}
         <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
@@ -69,7 +76,7 @@ export default function Mission() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6 max-w-3xl"
         >
-          Mission – Assistant Cinematographer. This project captures powerful visuals and narrative energy, where I contributed creatively through lighting, composition, and movement to tell a compelling story.
+          Guna, a retired police officer, takes his daughter to the UK for much-needed medical treatment. However, a sudden turn of events leads to him getting imprisoned.
         </p>
 
         {/* Back Link */}

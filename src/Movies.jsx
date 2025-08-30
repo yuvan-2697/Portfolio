@@ -10,10 +10,10 @@ export default function Movies() {
   const location = useLocation(); // for active tab highlight
 
   const projects = [
-    { title: "Kaliyugam", image: kali, description: "A short description of Kaliyugam with highlights and key storyline details.", link: "/kali" },
-    { title: "Boo", image: boo, description: "A short description of Boo covering its main plot and critical acclaim.", link: "/boo" },
-    { title: "Lucky Man", image: lucky, description: "A short description highlighting Lucky Man’s unique aspects.", link: "/luckyman" },
-    { title: "Mission", image: miss, description: "A short description of Mission covering its main plot and critical acclaim.", link: "/mission" },
+    { title: "Kaliyugam", image: kali, description: "Assistant Cinematographer", link: "/kali" },
+    { title: "Boo", image: boo, description: "Assistant Cinematographer", link: "/boo" },
+    { title: "Lucky Man", image: lucky, description: "Assistant Cinematographer", link: "/luckyman" },
+    { title: "Mission", image: miss, description: "Assistant Cinematographer", link: "/mission" },
   ];
 
   const tabs = [
@@ -74,7 +74,7 @@ export default function Movies() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="max-w-2xl mx-auto text-white/70 mb-12 leading-relaxed"
         >
-          A collection of my movie projects. Hover to read description, click to view details.
+          From vision to screen. Click to explore each project.
         </p>
 
         {/* Projects Grid */}

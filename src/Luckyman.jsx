@@ -48,10 +48,17 @@ export default function Luckyman() {
 
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-0 animate-fade-in-slow"
         >
           Luckyman
         </h1>
+        <h2
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
+        >
+          Assistant Cinematographer
+        </h2>
+
 
         {/* YouTube Video Embed */}
         <div className="w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl">
@@ -69,7 +76,7 @@ export default function Luckyman() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6 max-w-3xl"
         >
-          *Luckyman* – Assistant Cinematographer. This project combines emotive storytelling with cinematic imagery, where I contributed through creative camera movement and lighting that helped bring the mood to life.
+          When Murugan, who has been unlucky since birth, wins a car through a contest, he believes his spell of bad luck is over. Everything changes when the lucky car gets stolen, forcing Murugan to reluctantly join forces with a police officer to find it.
         </p>
 
         {/* Back Link */}

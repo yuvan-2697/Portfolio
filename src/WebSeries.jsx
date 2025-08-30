@@ -71,7 +71,7 @@ export default function WebSeries() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="max-w-2xl mx-auto text-white/70 mb-12 leading-relaxed"
         >
-          A collection of my webseries projects. Hover to read description, click to view details.
+          A collection of my webseries projects. Click to view details.
         </p>
 
         {/* Projects Grid */}

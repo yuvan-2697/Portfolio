@@ -47,10 +47,16 @@ export default function Kaiyum() {
 
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-0 animate-fade-in-slow"
         >
           Kaiyum Kalavum
         </h1>
+        <h2
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
+        >
+          Assistant Cinematographer
+        </h2>
 
         {/* YouTube Video */}
         <div className="w-full max-w-3xl aspect-video mb-6 rounded-2xl overflow-hidden shadow-2xl">
@@ -68,7 +74,7 @@ export default function Kaiyum() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6"
         >
-          "Kaiyum Kalavum" – Assistant Cinematographer. A captivating story showcasing light, movement, and emotion. This project highlights my role in cinematography and collaboration with the team to bring the narrative to life.
+           Serendipity plays matchmaker when it brings together a compulsive thief and an unlucky pickpocket who find themselves being drawn closer to each other with every theft they pull off.
         </p>
 
         {/* Back Link */}

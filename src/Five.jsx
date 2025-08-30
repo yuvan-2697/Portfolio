@@ -48,10 +48,16 @@ export default function Five() {
 
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow"
+          className="text-5xl md:text-6xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-0 animate-fade-in-slow"
         >
-          Five
+          Five Six Seven Eight
         </h1>
+        <h2
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
+        >
+          Associate Cinematographer
+        </h2>
 
         {/* Responsive YouTube Embed */}
         <div className="w-full max-w-3xl aspect-video mb-6 rounded-2xl overflow-hidden shadow-2xl">
@@ -69,16 +75,16 @@ export default function Five() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-white/70 text-lg md:text-xl mb-6"
         >
-          "Five" – Associate Cinematographer. This project captures intricate visual storytelling through dynamic camera work and creative lighting, emphasizing collaboration and narrative depth.
+          Semba and Vikram, two teenagers belonging to different strata of society, come together to help a friend in need. They courageously try to overcome many obstacles in their path with just one thing filling their hearts and souls - dance.
         </p>
 
         {/* Back Link */}
         <Link
-          to="/movies"
+          to="/webseries"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="mt-4 inline-block px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md text-white font-semibold hover:bg-white/20 transition"
         >
-          ← Back to Movies
+          ← Back to Webseries
         </Link>
       </main>
 
