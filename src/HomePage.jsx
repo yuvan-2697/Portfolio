@@ -82,31 +82,31 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-88px)] text-center px-6">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[calc(100vh-88px)] text-center px-4 sm:px-6 md:px-8">
         <h1
           style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-5xl md:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 animate-fade-in-slow"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-4 animate-fade-in-slow"
         >
           Ribhu Sarma
         </h1>
 
         <span
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-base md:text-lg tracking-[0.35em] uppercase text-white/70 mb-6"
+          className="text-sm sm:text-base md:text-lg tracking-[0.35em] uppercase text-white/70 mb-6"
         >
           Cinematographer
         </span>
 
-        <div className="mx-auto h-px w-24 bg-white/40 mb-10" />
+        <div className="mx-auto h-px w-20 sm:w-24 bg-white/40 mb-8 sm:mb-10" />
 
         <p
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="max-w-xl text-white/70 mb-12 leading-relaxed"
+          className="max-w-full sm:max-w-xl md:max-w-2xl text-white/70 mb-12 leading-relaxed text-sm sm:text-base md:text-lg"
         >
           Crafting images with light, movement, and emotion—across films, commercials, and documentaries.
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10 mt-6">
           {categories.map((cat, idx) => (
             <Link
               key={cat.name}
@@ -118,12 +118,12 @@ export default function Home() {
                 <img
                   src={cat.image}
                   alt={cat.name}
-                  className="h-64 w-64 object-cover rounded-2xl shadow-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
+                  className="h-48 sm:h-56 md:h-64 w-48 sm:w-56 md:w-64 object-cover rounded-2xl shadow-lg transition-transform duration-500 ease-in-out group-hover:scale-105"
                 />
               )}
               <span
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-4 text-lg md:text-xl font-bold tracking-[0.35em] uppercase text-white/90 transition group-hover:text-white"
+                className="mt-3 sm:mt-4 text-lg sm:text-xl md:text-xl font-bold tracking-[0.35em] uppercase text-white/90 transition group-hover:text-white text-center"
               >
                 {cat.name}
               </span>
