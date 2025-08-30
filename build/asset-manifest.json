@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.92c5eecb.css",
+    "main.js": "/static/js/main.fb63d574.js",
+    "static/media/home1.png": "/static/media/home1.fecac950fdd141ca961d.png",
+    "static/media/kali.png": "/static/media/kali.c796c1bdf98ed75dade2.png",
+    "static/media/3bhk.png": "/static/media/3bhk.0c43420a42e116e2c1a1.png",
+    "static/media/lucky.png": "/static/media/lucky.e879f5efd39b7e5d5567.png",
+    "static/media/dance.png": "/static/media/dance.e07749003ee63860cb4b.png",
+    "static/media/web2.png": "/static/media/web2.43eb0bd18375b7c12800.png",
+    "static/media/mission.png": "/static/media/mission.88fbfb9c69daa9400e9c.png",
+    "static/media/boo.png": "/static/media/boo.9b1dfdd8042c3e9b7b01.png",
+    "static/media/kk.png": "/static/media/kk.eede1de6f0f68773921d.png",
+    "static/media/mb.png": "/static/media/mb.b924bac735e5581fddbe.png",
+    "static/media/nac.png": "/static/media/nac.b8c4439549ff75880ea6.png",
+    "static/media/nalli.png": "/static/media/nalli.9d8b8d207e657b2c3e85.png",
+    "static/media/dug.png": "/static/media/dug.46bfd5b081f7c243c774.png",
+    "static/media/cg.png": "/static/media/cg.9b823f4be5bfd7caf668.png",
+    "static/media/nalli2.png": "/static/media/nalli2.da47e2021731b543c94c.png",
+    "static/media/ws.png": "/static/media/ws.2898ca5a9a081ade8ff4.png",
+    "static/media/dp.jpeg": "/static/media/dp.3f906bf98c0d81f51655.jpeg",
+    "static/media/comm.jpg": "/static/media/comm.df53bd76f6a7f508db3b.jpg",
+    "static/media/ws2.jpg": "/static/media/ws2.50f1dc8015914d2f9967.jpg",
+    "static/media/about.jpg": "/static/media/about.0785ef175f8101bd2140.jpg",
+    "static/media/moviebg1.jpg": "/static/media/moviebg1.e71c9219bac071d7c75e.jpg",
+    "static/media/commbg.jpg": "/static/media/commbg.6941441d59005d95a6ed.jpg",
+    "index.html": "/index.html",
+    "main.92c5eecb.css.map": "/static/css/main.92c5eecb.css.map",
+    "main.fb63d574.js.map": "/static/js/main.fb63d574.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92c5eecb.css",
+    "static/js/main.fb63d574.js"
+  ]
+}
