@@ -56,7 +56,7 @@ export default function Luckyman() {
           style={{ fontFamily: "'Montserrat', sans-serif" }}
           className="text-xl md:text-2xl tracking-wider uppercase text-white animate-fade-in-slow mt-0"
         >
-          Assistant Cinematographer
+          Associate Cinematographer
         </h2>
 
 
