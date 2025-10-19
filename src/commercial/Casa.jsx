@@ -28,7 +28,7 @@ export default function Casa() {
     },
   ];
 
-  return (
+  return ( 
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
 
       {/* Header */}
