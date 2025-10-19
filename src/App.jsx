@@ -1,7 +1,11 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./HomePage";
-
+import Casa from "./commercial/Casa";
+import Nalli from "./commercial/Nalli";
+import Nac from "./commercial/Nac";
+import Dug from "./commercial/Dug";
+import Nallihundred from "./commercial/Nallihundred";
 import WebSeries from './WebSeries';
 import Movies from './Movies';
 import Commercials from './Commercials';
@@ -14,8 +18,9 @@ import Luckyman from './Luckyman';
 import Boo from './Boo';
 import Kali from './Kali';
 import Mission from './Mission';
+import Aravind from "./events/Aravind";  // ← import Aravind page
+import Videos from "./music/Videos";
 import './animations.css';
-
 
 function App() {
   return (
@@ -35,6 +40,17 @@ function App() {
         <Route path="/boo" element={<Boo />} />
         <Route path="/kali" element={<Kali />} />
         <Route path="/mission" element={<Mission />} />
+        <Route path="/commercial/casa" element={<Casa />} />
+        <Route path="/commercial/nalli" element={<Nalli />} />
+        <Route path="/commercial/nallihundred" element={<Nallihundred />} />
+        <Route path="/commercial/nac" element={<Nac />} />
+        <Route path="/commercial/dug" element={<Dug />} />
+
+        {/* Events */}
+        <Route path="/events/aravind" element={<Aravind />} />  {/* ← Aravind route */}
+
+        {/* Music */}
+        <Route path="/music/videos" element={<Videos />} />  {/* ← Videos route */}
       </Routes>
     </Router>
   );

@@ -99,12 +99,33 @@ export default function About() {
 
           {/* Bio */}
           <div ref={textRef} className="opacity-0 translate-y-10 transition-all duration-700">
-            <h1
-              style={{ fontFamily: "'Anton', sans-serif" }}
-              className="text-5xl md:text-7xl tracking-widest uppercase mb-6 bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent animate-gradient-text"
-            >
-              About Me
-            </h1>
+            <div className="flex items-center gap-6 mb-6">
+              <h1
+                style={{ fontFamily: "'Simplifica', sans-serif" }}
+                className="text-5xl md:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent animate-gradient-text"
+              >
+                About Me
+              </h1>
+
+              {/* Pencil Sketch Camera Animation */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                className="w-16 h-16 md:w-24 md:h-24 stroke-white"
+                fill="none"
+                strokeWidth="2"
+              >
+                <path
+                  d="M80 160h352v224H80zM160 128l32-48h128l32 48"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="draw-animation"
+                />
+                <circle cx="256" cy="272" r="80" stroke="white" className="draw-animation" />
+              </svg>
+            </div>
+
             <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-white/70 text-lg md:text-xl mb-6 leading-relaxed">
               Hey there! I’m Ribhu Sarma, an engineering grad from Chennai who accidentally fell in love with cinematography. I chase stories with my camera, playing with light, movement, and emotion to turn ordinary moments into something cinematic.
             </p>
@@ -138,7 +159,7 @@ export default function About() {
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
 
-      {/* Gradient Animation */}
+      {/* Gradient + Camera Animation CSS */}
       <style>{`
         @keyframes gradientAnimation {
           0% { background-position: 0% 50%; }
@@ -152,8 +173,20 @@ export default function About() {
           -webkit-text-fill-color: transparent;
           animation: gradientAnimation 8s ease infinite;
         }
-      `}</style>
 
+        /* Camera Sketch Loop Animation */
+        .draw-animation {
+          stroke-dasharray: 1000;
+          stroke-dashoffset: 1000;
+          animation: draw 8s ease-in-out infinite;
+        }
+        @keyframes draw {
+          0% { stroke-dashoffset: 1000; }
+          50% { stroke-dashoffset: 0; }
+          100% { stroke-dashoffset: 1000; }
+        }
+
+      `}</style>
     </div>
   );
 }
