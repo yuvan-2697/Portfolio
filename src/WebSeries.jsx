@@ -1,22 +1,45 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import kk from './assets/kk.png';
-import bb from './assets/3bhk.png';
-import mb from './assets/mb.png';
-import dd from './assets/dance.png';
+import kk from "./assets/kk.png";
+import bb from "./assets/3bhk.png";
+import mb from "./assets/mb.png";
+import dd from "./assets/dance.png";
 import { FiMenu, FiX } from "react-icons/fi";
 
 export default function WebSeries() {
 
   const location = useLocation();
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All");
+  const [videoOpen, setVideoOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState("");
 
   const projects = [
-    { title: "Kaiyum Kalavum", image: kk, description: "Assistant Cinematographer", link: "/kaiyum" },
-    { title: "3 BHK", image: bb, description: "Associate Cinematographer", link: "/bhk" },
-    { title: "Meme Boys", image: mb, description: "Associate Cinematographer", link: "/memeboys" },
-    { title: "Five Six Seven Eight", image: dd, description: "Associate Cinematographer", link: "/five" },
+    {
+      title: "Kaiyum Kalavum",
+      image: kk,
+      description: "Assistant Cinematographer",
+      video: "https://www.youtube.com/embed/sZzcP1Ttwik"
+    },
+    {
+      title: "3 BHK",
+      image: bb,
+      description: "Associate Cinematographer",
+      video: "https://www.youtube.com/embed/EI8s_HHeias"
+    },
+    {
+      title: "Meme Boys",
+      image: mb,
+      description: "Associate Cinematographer",
+      video: "https://www.youtube.com/embed/YFDRukyFFz4"
+    },
+    {
+      title: "Five Six Seven Eight",
+      image: dd,
+      description: "Associate Cinematographer",
+      video: "https://www.youtube.com/embed/cfLW49qHN54"
+    }
   ];
 
   const filteredProjects =
@@ -27,7 +50,7 @@ export default function WebSeries() {
     { name: "Webseries", link: "/webseries" },
     { name: "Movies", link: "/movies" },
     { name: "Commercials", link: "/commercials" },
-    { name: "About", link: "/about" },
+    { name: "About", link: "/about" }
   ];
 
   const roles = ["All", "Assistant Cinematographer", "Associate Cinematographer"];
@@ -36,7 +59,7 @@ export default function WebSeries() {
 
     <div className="relative min-h-screen bg-[#CFC8BE] text-gray-900">
 
-      {/* Header */}
+      {/* HEADER */}
 
       <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
 
@@ -52,12 +75,12 @@ export default function WebSeries() {
 
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-800 text-3xl focus:outline-none"
+            className="text-gray-800 text-3xl"
           >
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
 
-          <div className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 z-30 transform transition-all duration-300 ease-in-out origin-top ${
+          <div className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
             menuOpen
               ? "scale-y-100 opacity-100"
               : "scale-y-0 opacity-0 pointer-events-none"
@@ -70,8 +93,10 @@ export default function WebSeries() {
                 to={tab.link}
                 onClick={() => setMenuOpen(false)}
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`px-4 py-2 text-gray-700 hover:text-black uppercase tracking-[0.25em] transition-colors ${
-                  location.pathname === tab.link ? "font-semibold text-black" : ""
+                className={`px-4 py-2 text-gray-700 hover:text-black uppercase tracking-[0.25em] ${
+                  location.pathname === tab.link
+                    ? "font-semibold text-black"
+                    : ""
                 }`}
               >
                 {tab.name}
@@ -86,7 +111,7 @@ export default function WebSeries() {
       </header>
 
 
-      {/* Page Heading */}
+      {/* HEADING */}
 
       <main className="relative z-10 pt-[120px] px-6 pb-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
 
@@ -103,13 +128,13 @@ export default function WebSeries() {
             style={{ fontFamily: "'Montserrat', sans-serif" }}
             className="max-w-xl text-gray-600 leading-relaxed"
           >
-            A collection of my webseries projects. Click to view details.
+            A collection of my webseries projects. Click to watch.
           </p>
 
         </div>
 
 
-        {/* Filter */}
+        {/* FILTER */}
 
         <div className="flex flex-col gap-4 md:flex-shrink-0">
 
@@ -142,7 +167,7 @@ export default function WebSeries() {
       </main>
 
 
-      {/* Projects Grid */}
+      {/* PROJECT GRID */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto px-6 pb-20">
 
@@ -150,31 +175,29 @@ export default function WebSeries() {
 
           <div
             key={proj.title}
-            className="relative group overflow-hidden"
+            className="relative group overflow-hidden cursor-pointer"
+            onClick={() => {
+              setCurrentVideo(proj.video);
+              setVideoOpen(true);
+            }}
           >
 
-            <Link to={proj.link}>
+            <img
+              src={proj.image}
+              alt={proj.title}
+              className="w-full h-[420px] object-cover transition duration-500 group-hover:scale-105"
+            />
 
-              <img
-                src={proj.image}
-                alt={proj.title}
-                className="w-full h-[420px] object-cover transition duration-500 group-hover:scale-105"
-              />
+            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
 
-              {/* Hover overlay */}
+              <p
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className="text-white text-lg uppercase tracking-widest"
+              >
+                {proj.description}
+              </p>
 
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-
-                <p
-                  style={{ fontFamily: "'Montserrat', sans-serif" }}
-                  className="text-white text-lg uppercase tracking-widest"
-                >
-                  {proj.description}
-                </p>
-
-              </div>
-
-            </Link>
+            </div>
 
             <h3
               style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -190,7 +213,34 @@ export default function WebSeries() {
       </div>
 
 
-      {/* Footer */}
+      {/* VIDEO POPUP */}
+
+      {videoOpen && (
+
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
+          onClick={() => setVideoOpen(false)}
+        >
+
+          <div className="w-[90%] md:w-[900px] aspect-video">
+
+            <iframe
+              width="100%"
+              height="100%"
+              src={currentVideo}
+              title="YouTube video"
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+
+          </div>
+
+        </div>
+
+      )}
+
+
+      {/* FOOTER */}
 
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -200,7 +250,5 @@ export default function WebSeries() {
       </footer>
 
     </div>
-
   );
-
 }

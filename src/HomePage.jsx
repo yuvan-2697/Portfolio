@@ -83,6 +83,7 @@ export default function Home() {
       {/* Grain texture */}
       <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
+
       {/* Header */}
 
       <header className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center">
@@ -95,12 +96,44 @@ export default function Home() {
           RS
         </Link>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-gray-800 text-3xl"
-        >
-          {menuOpen ? <FiX /> : <FiMenu />}
-        </button>
+        <div className="relative">
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="text-gray-800 text-3xl"
+          >
+            {menuOpen ? <FiX /> : <FiMenu />}
+          </button>
+
+          {/* Dropdown */}
+
+          <div
+            className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
+              menuOpen
+                ? "scale-y-100 opacity-100"
+                : "scale-y-0 opacity-0 pointer-events-none"
+            }`}
+          >
+
+            {tabs.map((tab) => (
+              <Link
+                key={tab.name}
+                to={tab.link}
+                onClick={() => setMenuOpen(false)}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className={`px-4 py-2 text-gray-700 hover:text-black uppercase tracking-[0.25em] ${
+                  location.pathname === tab.link
+                    ? "font-semibold text-black"
+                    : ""
+                }`}
+              >
+                {tab.name}
+              </Link>
+            ))}
+
+          </div>
+
+        </div>
 
       </header>
 
