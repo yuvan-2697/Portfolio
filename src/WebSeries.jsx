@@ -4,6 +4,7 @@ import kk from "./assets/kk.png";
 import bb from "./assets/3bhk.png";
 import mb from "./assets/mb.png";
 import dd from "./assets/dance.png";
+import lb from "./assets/wslb.jpg";
 import { FiMenu, FiX } from "react-icons/fi";
 
 export default function WebSeries() {
@@ -16,7 +17,14 @@ export default function WebSeries() {
   const [currentVideo, setCurrentVideo] = useState("");
 
   const projects = [
-    {
+
+      {
+        title: "Local Times",
+        image: lb,
+        description: "Assistant Cinematographer",
+        video: "https://www.youtube.com/embed/dne2oxzGaBk"
+      },
+      {
       title: "Kaiyum Kalavum",
       image: kk,
       description: "Assistant Cinematographer",
@@ -128,7 +136,7 @@ export default function WebSeries() {
             style={{ fontFamily: "'Montserrat', sans-serif" }}
             className="max-w-xl text-gray-600 leading-relaxed"
           >
-            A collection of my webseries projects. Click to watch.
+            A collection of my webseries projects. Click to watch the trailer.
           </p>
 
         </div>

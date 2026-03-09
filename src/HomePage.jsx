@@ -75,16 +75,36 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900">
+
+    <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900 overflow-hidden">
+
+      {/* ABSTRACT TRIANGLE BACKGROUND */}
+
+      <svg
+        className="absolute inset-0 w-full h-full opacity-30"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+
+        <polygon points="0,0 45,0 20,35" fill="#d8d0c6"/>
+        <polygon points="45,0 75,25 20,35" fill="#cec6bb"/>
+        <polygon points="75,25 100,0 100,45" fill="#c8c0b6"/>
+        <polygon points="0,35 20,35 0,70" fill="#ddd5cb"/>
+        <polygon points="20,35 55,65 0,70" fill="#d2c9bf"/>
+        <polygon points="55,65 100,45 100,75" fill="#cbc3b9"/>
+        <polygon points="0,70 55,65 35,100" fill="#d7cfc4"/>
+        <polygon points="55,65 100,75 80,100" fill="#cec6bb"/>
+
+      </svg>
 
       {/* Radial highlight */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.25),transparent_60%)]"></div>
 
-      {/* Grain texture */}
+      {/* Film grain */}
       <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
 
-      {/* Header */}
+      {/* HEADER */}
 
       <header className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center">
 
@@ -105,15 +125,11 @@ export default function Home() {
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
 
-          {/* Dropdown */}
-
-          <div
-            className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
+          <div className={`absolute right-0 mt-3 w-48 bg-[#CFC8BE]/95 backdrop-blur-md rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
               menuOpen
                 ? "scale-y-100 opacity-100"
                 : "scale-y-0 opacity-0 pointer-events-none"
-            }`}
-          >
+            }`}>
 
             {tabs.map((tab) => (
               <Link
@@ -121,7 +137,7 @@ export default function Home() {
                 to={tab.link}
                 onClick={() => setMenuOpen(false)}
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`px-4 py-2 text-gray-700 hover:text-black uppercase tracking-[0.25em] ${
+                className={`px-4 py-2 text-gray-800 hover:text-black uppercase tracking-[0.25em] ${
                   location.pathname === tab.link
                     ? "font-semibold text-black"
                     : ""
@@ -138,17 +154,19 @@ export default function Home() {
       </header>
 
 
-      {/* Hero */}
+      {/* HERO */}
 
       <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">
 
         <Link to="/about">
+
           <h1
             style={{ fontFamily: "'Montserrat', sans-serif" }}
             className="text-6xl sm:text-7xl md:text-8xl text-black mb-4 uppercase tracking-widest"
           >
             Ribhu Sarma
           </h1>
+
         </Link>
 
         <span
@@ -218,7 +236,6 @@ export default function Home() {
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setVideoOpen(false)}
         >
-
           <div className="w-[90%] md:w-[900px] aspect-video">
 
             <iframe
@@ -231,12 +248,11 @@ export default function Home() {
             ></iframe>
 
           </div>
-
         </div>
       )}
 
 
-      {/* Footer */}
+      {/* FOOTER */}
 
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
