@@ -21,7 +21,7 @@ export default function WebSeries() {
       {
         title: "Local Times",
         image: lb,
-        description: "Assistant Cinematographer",
+        description: "Associate Cinematographer",
         video: "https://www.youtube.com/embed/dne2oxzGaBk"
       },
       {
