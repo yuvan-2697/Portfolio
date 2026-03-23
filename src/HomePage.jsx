@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FiMenu, FiX, FiShare2, FiCopy } from "react-icons/fi";
+import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
 
 import tea1 from "./assets/tea1.jpg";
 import tea2 from "./assets/tea2.jpg";
@@ -34,6 +36,9 @@ export default function Home() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
+
+  const [shareOpen, setShareOpen] = useState(false);
+  const [shareLink, setShareLink] = useState("");
 
   const youtubeLink = "https://www.youtube.com/embed/l36QKGyqFwE";
 
@@ -74,38 +79,52 @@ export default function Home() {
     { image: celeb2, title: "Kalaignar 100 Tribute" },
   ];
 
+  // ✅ SHARE
+  const handleShare = (index) => {
+    const url = `${window.location.origin}${window.location.pathname}#img-${index}`;
+    setShareLink(url);
+    setShareOpen(true);
+  };
+
+  // ✅ COPY FIX (works everywhere)
+const [copied, setCopied] = useState(false);
+
+const copyToClipboard = () => {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(shareLink);
+  } else {
+    const textArea = document.createElement("textarea");
+    textArea.value = shareLink;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+  }
+
+  // subtle feedback
+  setCopied(true);
+  setTimeout(() => setCopied(false), 1500);
+};
+
+  // ✅ SCROLL
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 300);
+      }
+    }
+  }, []);
+
   return (
 
     <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900 overflow-hidden">
 
-      {/* ABSTRACT TRIANGLE BACKGROUND */}
-
-      <svg
-        className="absolute inset-0 w-full h-full opacity-30"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-
-        <polygon points="0,0 45,0 20,35" fill="#d8d0c6"/>
-        <polygon points="45,0 75,25 20,35" fill="#cec6bb"/>
-        <polygon points="75,25 100,0 100,45" fill="#c8c0b6"/>
-        <polygon points="0,35 20,35 0,70" fill="#ddd5cb"/>
-        <polygon points="20,35 55,65 0,70" fill="#d2c9bf"/>
-        <polygon points="55,65 100,45 100,75" fill="#cbc3b9"/>
-        <polygon points="0,70 55,65 35,100" fill="#d7cfc4"/>
-        <polygon points="55,65 100,75 80,100" fill="#cec6bb"/>
-
-      </svg>
-
-      {/* Radial highlight */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.25),transparent_60%)]"></div>
-
-      {/* Film grain */}
-      <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
-
-
       {/* HEADER */}
-
       <header className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center">
 
         <Link
@@ -117,83 +136,58 @@ export default function Home() {
         </Link>
 
         <div className="relative">
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-800 text-3xl"
-          >
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-800 text-3xl">
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
 
-          <div className={`absolute right-0 mt-3 w-48 bg-[#CFC8BE]/95 backdrop-blur-md rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
-              menuOpen
-                ? "scale-y-100 opacity-100"
-                : "scale-y-0 opacity-0 pointer-events-none"
-            }`}>
-
+          <div className={`absolute right-0 mt-3 w-48 bg-[#CFC8BE]/95 backdrop-blur-md rounded-xl shadow-lg flex flex-col py-2 ${
+            menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}>
             {tabs.map((tab) => (
               <Link
                 key={tab.name}
                 to={tab.link}
                 onClick={() => setMenuOpen(false)}
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`px-4 py-2 text-gray-800 hover:text-black uppercase tracking-[0.25em] ${
-                  location.pathname === tab.link
-                    ? "font-semibold text-black"
-                    : ""
-                }`}
+                className="px-4 py-2 text-gray-800 uppercase tracking-[0.25em]"
               >
                 {tab.name}
               </Link>
             ))}
-
           </div>
-
         </div>
-
       </header>
 
-
-      {/* HERO */}
-
+      {/* MAIN */}
       <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">
 
         <Link to="/about">
-
-          <h1
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="text-6xl sm:text-7xl md:text-8xl text-black mb-4 uppercase tracking-widest"
-          >
-            Ribhu Sarma
-          </h1>
-
-        </Link>
-
-        <span
+        <h1
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-lg sm:text-xl md:text-4xl tracking-[0.35em] uppercase text-black mb-6"
+          className="text-8xl mb-4 uppercase tracking-widest hover:opacity-80 transition"
         >
+          Ribhu Sarma
+        </h1>
+      </Link>
+
+        <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-4xl tracking-[0.35em] uppercase mb-6">
           Director of Photography
         </span>
 
-        <div className="mx-auto h-px w-24 bg-gray-400 mb-10" />
+        <div className="h-px w-24 bg-gray-400 mb-10" />
 
-        <p
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="max-w-3xl text-black mb-20 leading-relaxed text-lg sm:text-xl md:text-2xl"
-        >
+        <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="max-w-3xl mb-20 text-2xl">
           Crafting images with light, movement, and emotion—across films,
-          commercials, and music videos.
+          commercials, music videos and documentaries.
         </p>
 
-
-        {/* PROJECT GRID */}
-
+        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-[1700px]">
 
           {projects.map((project, index) => (
 
             <div
+              id={`img-${index}`}
               key={index}
               className="group flex justify-center cursor-pointer"
               onClick={() => project.type === "dug" && setVideoOpen(true)}
@@ -208,56 +202,82 @@ export default function Home() {
                 />
 
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-
                   <h2
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                     className="text-white text-2xl tracking-widest uppercase"
                   >
                     {project.title}
                   </h2>
-
                 </div>
+
+                {/* SHARE ICON */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleShare(index);
+                  }}
+                  className="absolute bottom-3 right-3 bg-black/70 p-2 rounded-full opacity-0 group-hover:opacity-100 transition"
+                >
+                  <FiShare2 className="text-white text-sm" />
+                </button>
 
               </div>
 
             </div>
-
           ))}
 
         </div>
 
       </main>
 
-
-      {/* VIDEO POPUP */}
-
+      {/* VIDEO */}
       {videoOpen && (
-        <div
-          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
-          onClick={() => setVideoOpen(false)}
-        >
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50" onClick={() => setVideoOpen(false)}>
           <div className="w-[90%] md:w-[900px] aspect-video">
+            <iframe src={youtubeLink} width="100%" height="100%" allowFullScreen />
+          </div>
+        </div>
+      )}
 
-            <iframe
-              width="100%"
-              height="100%"
-              src={youtubeLink}
-              title="YouTube video"
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
+      {/* SHARE MODAL */}
+      {shareOpen && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50" onClick={() => setShareOpen(false)}>
+          <div className="bg-[#f2f2f2] w-[90%] max-w-2xl p-10 relative" onClick={(e) => e.stopPropagation()}>
+
+            <button className="absolute top-6 right-6 text-2xl" onClick={() => setShareOpen(false)}>✕</button>
+
+            <div className="flex justify-center gap-10 mb-8 text-2xl">
+
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareLink}`} target="_blank">
+                <FaFacebookF />
+              </a>
+
+              <a href={`https://twitter.com/intent/tweet?url=${shareLink}`} target="_blank">
+                <FaTwitter />
+              </a>
+
+              <a href={`https://pinterest.com/pin/create/button/?url=${shareLink}`} target="_blank">
+                <FaPinterestP />
+              </a>
+
+              <a href={`mailto:?subject=Check this out&body=${shareLink}`}>
+                <FiMail />
+              </a>
+
+            </div>
+
+            <div className="flex border border-gray-400">
+              <input value={shareLink} readOnly className="flex-1 px-4 py-3 bg-transparent" />
+              <button onClick={copyToClipboard} className="bg-black px-5 flex items-center">
+                <FiCopy className="text-white" />
+              </button>
+            </div>
 
           </div>
         </div>
       )}
 
-
-      {/* FOOTER */}
-
-      <footer
-        style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="w-full text-center px-6 py-10 text-xs text-black"
-      >
+      <footer style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-center py-10 text-xs">
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
 
