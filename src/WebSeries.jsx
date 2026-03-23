@@ -58,6 +58,7 @@ export default function WebSeries() {
     { name: "Webseries", link: "/webseries" },
     { name: "Movies", link: "/movies" },
     { name: "Commercials", link: "/commercials" },
+    
     { name: "About", link: "/about" }
   ];
 
@@ -121,58 +122,56 @@ export default function WebSeries() {
 
       {/* HEADING */}
 
-      <main className="relative z-10 pt-[120px] px-6 pb-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+{/* HEADING */}
+<div className="relative z-10 pt-28 px-6 max-w-[1700px] mx-auto">
 
-        <div className="flex-1">
+  {/* TITLE + FILTER ROW */}
+  <div className="relative flex items-center justify-center mb-6">
 
-          <h1
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="text-5xl md:text-6xl tracking-widest uppercase text-black mb-6"
-          >
-            Webseries
-          </h1>
+    {/* TITLE (centered) */}
+    <h1
+      style={{ fontFamily: "'Montserrat', sans-serif" }}
+      className="text-6xl md:text-8xl uppercase tracking-widest text-black"
+    >
+      Webseries
+    </h1>
 
-          <p
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="max-w-xl text-gray-600 leading-relaxed"
-          >
-            A collection of my webseries projects. Click to watch the trailer.
-          </p>
+    {/* FILTER (right side, aligned with title) */}
+    <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 w-[260px]">
 
-        </div>
+      <h2
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+        className="uppercase font-semibold text-gray-500 tracking-wider text-right text-sm"
+      >
+        Filter by Role
+      </h2>
 
+      {roles.map(role => (
 
-        {/* FILTER */}
+        <button
+          key={role}
+          onClick={() => setFilter(role)}
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className={`w-full text-right px-4 py-2 rounded-lg transition ${
+            filter === role
+              ? "bg-black text-white"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
+        >
+          {role}
+        </button>
 
-        <div className="flex flex-col gap-4 md:flex-shrink-0">
+      ))}
 
-          <h2
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="uppercase font-semibold text-gray-500 tracking-wider"
-          >
-            Filter by Role
-          </h2>
+    </div>
 
-          {roles.map(role => (
+  </div>
 
-            <button
-              key={role}
-              onClick={() => setFilter(role)}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className={`px-4 py-2 rounded-lg transition ${
-                filter === role
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {role}
-            </button>
+  {/* DIVIDER */}
+  <div className="h-px w-24 bg-gray-400 mx-auto mb-10" />
 
-          ))}
-
-        </div>
-
-      </main>
+  
+</div>
 
 
       {/* PROJECT GRID */}

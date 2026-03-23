@@ -53,6 +53,7 @@ export default function Commercials() {
     { name: "Webseries", link: "/webseries" },
     { name: "Movies", link: "/movies" },
     { name: "Commercials", link: "/commercials" },
+    { name: "Non Cinema", link: "/non-cinema" },
     { name: "About", link: "/about" },
   ];
 
@@ -64,14 +65,11 @@ export default function Commercials() {
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900">
 
-      {/* Radial highlight */}
+      {/* Background */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.25),transparent_60%)]"></div>
-
-      {/* Grain texture */}
       <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
       {/* HEADER */}
-
       <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
 
         <Link
@@ -83,7 +81,6 @@ export default function Commercials() {
         </Link>
 
         <div className="relative">
-
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="text-gray-800 text-3xl"
@@ -98,7 +95,6 @@ export default function Commercials() {
           }`}>
 
             {tabs.map(tab => (
-
               <Link
                 key={tab.name}
                 to={tab.link}
@@ -112,74 +108,58 @@ export default function Commercials() {
               >
                 {tab.name}
               </Link>
+            ))}
 
+          </div>
+        </div>
+      </header>
+
+      {/* HEADING (MATCHES WEBSERIES) */}
+      <div className="relative z-10 pt-28 px-6 max-w-[1700px] mx-auto">
+
+        <div className="relative flex items-center justify-center mb-6">
+
+          <h1
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            className="text-6xl md:text-8xl uppercase tracking-widest text-black"
+          >
+            Commercials
+          </h1>
+
+          {/* FILTER RIGHT */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 w-[260px]">
+
+            <h2
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="uppercase font-semibold text-gray-500 tracking-wider text-right text-sm"
+            >
+              Filter by Role
+            </h2>
+
+            {roles.map(role => (
+              <button
+                key={role}
+                onClick={() => setFilter(role)}
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className={`w-full text-right px-4 py-2 rounded-lg transition ${
+                  filter === role
+                    ? "bg-black text-white"
+                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                }`}
+              >
+                {role}
+              </button>
             ))}
 
           </div>
 
         </div>
 
-      </header>
+        <div className="h-px w-24 bg-gray-400 mx-auto mb-10" />
 
+      </div>
 
-      {/* HEADING */}
-
-      <main className="relative z-10 pt-[120px] px-6 pb-10 max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
-
-        <div className="flex-1">
-
-          <h1
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="text-5xl md:text-6xl tracking-widest uppercase text-black mb-6"
-          >
-            Commercials
-          </h1>
-
-          <p
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="max-w-xl text-gray-600 leading-relaxed"
-          >
-            Crafted visuals that elevate brands. Click to watch.
-          </p>
-
-        </div>
-
-
-        {/* FILTER */}
-
-        <div className="flex flex-col gap-4 md:flex-shrink-0">
-
-          <h2
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="uppercase font-semibold text-gray-500 tracking-wider"
-          >
-            Filter by Role
-          </h2>
-
-          {roles.map(role => (
-
-            <button
-              key={role}
-              onClick={() => setFilter(role)}
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className={`px-4 py-2 rounded-lg transition ${
-                filter === role
-                  ? "bg-black text-white"
-                  : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-              }`}
-            >
-              {role}
-            </button>
-
-          ))}
-
-        </div>
-
-      </main>
-
-
-      {/* PROJECT GRID */}
-
+      {/* GRID (MATCHES WEBSERIES) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto px-6 pb-20">
 
         {filteredProjects.map(proj => (
@@ -224,30 +204,25 @@ export default function Commercials() {
 
       </div>
 
-
       {/* VIDEO POPUP */}
-
       {videoOpen && (
-
         <div
           className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
           onClick={() => setVideoOpen(false)}
         >
-
           <div className="w-[90%] md:w-[900px] aspect-video">
 
             <iframe
               width="100%"
               height="100%"
               src={videoList[videoIndex]}
-              title="YouTube video"
               frameBorder="0"
               allowFullScreen
-            ></iframe>
+              title="video"
+            />
 
             {videoList.length > 1 && (
               <div className="flex justify-center gap-4 mt-4">
-
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -267,19 +242,14 @@ export default function Commercials() {
                 >
                   Next
                 </button>
-
               </div>
             )}
 
           </div>
-
         </div>
-
       )}
 
-
       {/* FOOTER */}
-
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
         className="w-full text-center px-6 pb-6 text-xs text-gray-500"

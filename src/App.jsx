@@ -7,7 +7,7 @@ import WebSeries from './WebSeries';
 import Movies from './Movies';
 import Commercials from './Commercials';
 import About from './About';
-
+import NonCinema from "./NonCinema";
 
 import Aravind from "./events/Aravind";  // ← import Aravind page
 import Videos from "./music/Videos";
@@ -23,7 +23,7 @@ function App() {
         <Route path="/movies" element={<Movies />} />
         <Route path="/commercials" element={<Commercials />} />
         <Route path="/about" element={<About />} />
-        
+        <Route path="/non-cinema" element={<NonCinema />} />
         
         
 
