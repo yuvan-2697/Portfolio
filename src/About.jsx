@@ -1,11 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FiMail, FiPhone, FiInstagram, FiMenu, FiX } from "react-icons/fi";
+import { FiMail, FiPhone, FiInstagram } from "react-icons/fi";
 import portrait from "./assets/ribhuabout.jpg";
+import SiteHeader from "./components/SiteHeader";
 
 export default function About() {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [loaded, setLoaded] = useState(false); // ✅ NEW
 
   const textRef = useRef(null);
@@ -32,14 +30,6 @@ export default function About() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const tabs = [
-    { name: "Home", link: "/" },
-    { name: "Webseries", link: "/webseries" },
-    { name: "Movies", link: "/movies" },
-    { name: "Commercials", link: "/commercials" },
-    { name: "About", link: "/about" },
-  ];
 
   const contacts = [
     {
@@ -70,49 +60,7 @@ export default function About() {
       <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
-
-        <Link
-          to="/"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-lg tracking-[0.35em] uppercase text-gray-800 hover:text-black transition"
-        >
-          RS
-        </Link>
-
-        <div className="relative">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-800 text-3xl"
-          >
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
-
-          <div
-            className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
-              menuOpen
-                ? "scale-y-100 opacity-100"
-                : "scale-y-0 opacity-0 pointer-events-none"
-            }`}
-          >
-            {tabs.map((tab) => (
-              <Link
-                key={tab.name}
-                to={tab.link}
-                onClick={() => setMenuOpen(false)}
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`px-4 py-2 uppercase tracking-[0.25em] ${
-                  location.pathname === tab.link
-                    ? "font-semibold text-black"
-                    : "text-gray-700"
-                }`}
-              >
-                {tab.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* MAIN */}
       <main className="relative z-10 pt-32 px-6 pb-16 max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-12">

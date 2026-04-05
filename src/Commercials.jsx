@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import SiteHeader from "./components/SiteHeader";
 
 import cg from "./assets/cg.png";
 import nalli from "./assets/nalli.png";
@@ -9,9 +8,6 @@ import dug from "./assets/dug.png";
 
 export default function Commercials() {
 
-  const location = useLocation();
-
-  const [menuOpen, setMenuOpen] = useState(false);
   const [filter, setFilter] = useState("All");
   const [videoOpen, setVideoOpen] = useState(false);
 
@@ -48,15 +44,6 @@ export default function Commercials() {
     }
   ];
 
-  const tabs = [
-    { name: "Home", link: "/" },
-    { name: "Webseries", link: "/webseries" },
-    { name: "Movies", link: "/movies" },
-    { name: "Commercials", link: "/commercials" },
-    { name: "Non Cinema", link: "/non-cinema" },
-    { name: "About", link: "/about" },
-  ];
-
   const roles = ["All", "Associate Cinematographer", "DOP"];
 
   const filteredProjects =
@@ -70,49 +57,7 @@ export default function Commercials() {
       <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
       {/* HEADER */}
-      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
-
-        <Link
-          to="/"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-lg tracking-[0.35em] uppercase text-gray-800 hover:text-black transition"
-        >
-          RS
-        </Link>
-
-        <div className="relative">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="text-gray-800 text-3xl"
-          >
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
-
-          <div className={`absolute right-0 mt-3 w-48 bg-white rounded-xl shadow-lg flex flex-col py-2 transform transition-all duration-300 origin-top ${
-            menuOpen
-              ? "scale-y-100 opacity-100"
-              : "scale-y-0 opacity-0 pointer-events-none"
-          }`}>
-
-            {tabs.map(tab => (
-              <Link
-                key={tab.name}
-                to={tab.link}
-                onClick={() => setMenuOpen(false)}
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`px-4 py-2 text-gray-700 hover:text-black uppercase tracking-[0.25em] ${
-                  location.pathname === tab.link
-                    ? "font-semibold text-black"
-                    : ""
-                }`}
-              >
-                {tab.name}
-              </Link>
-            ))}
-
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* HEADING (MATCHES WEBSERIES) */}
       <div className="relative z-10 pt-28 px-6 max-w-[1700px] mx-auto">

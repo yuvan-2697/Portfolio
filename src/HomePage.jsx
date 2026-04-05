@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX, FiShare2, FiCopy } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import { FiShare2, FiCopy } from "react-icons/fi";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
 import { FiMail } from "react-icons/fi";
+import SiteHeader from "./components/SiteHeader";
 
 import tea1 from "./assets/tea1.jpg";
 import tea2 from "./assets/tea2.jpg";
@@ -32,24 +33,12 @@ import celeb1 from "./assets/celeb1.png";
 import celeb2 from "./assets/celeb2.png";
 
 export default function Home() {
-
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
   const [videoOpen, setVideoOpen] = useState(false);
 
   const [shareOpen, setShareOpen] = useState(false);
   const [shareLink, setShareLink] = useState("");
 
   const youtubeLink = "https://www.youtube.com/embed/l36QKGyqFwE";
-
-  const tabs = [
-    { name: "Home", link: "/" },
-    { name: "Webseries", link: "/webseries" },
-    { name: "Movies", link: "/movies" },
-    { name: "Commercials", link: "/commercials" },
-    { name: "Non Cinema", link: "/non-cinema" },
-    { name: "About", link: "/about" },
-  ];
 
   const projects = [
     { image: tea1, title: "Soodana Koppaigal" },
@@ -126,38 +115,7 @@ const copyToClipboard = () => {
     <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900 overflow-hidden">
 
       {/* HEADER */}
-      <header className="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center">
-
-        <Link
-          to="/"
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-lg tracking-[0.35em] uppercase text-gray-800 hover:text-black transition"
-        >
-          RS
-        </Link>
-
-        <div className="relative">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-gray-800 text-3xl">
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
-
-          <div className={`absolute right-0 mt-3 w-48 bg-[#CFC8BE]/95 backdrop-blur-md rounded-xl shadow-lg flex flex-col py-2 ${
-            menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}>
-            {tabs.map((tab) => (
-              <Link
-                key={tab.name}
-                to={tab.link}
-                onClick={() => setMenuOpen(false)}
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="px-4 py-2 text-gray-800 uppercase tracking-[0.25em]"
-              >
-                {tab.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
+      <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center" />
 
       {/* MAIN */}
       <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">

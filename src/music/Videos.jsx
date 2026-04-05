@@ -1,21 +1,8 @@
 // events/Videos.jsx
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import React from "react";
+import SiteHeader from "../components/SiteHeader";
 
 export default function Videos() {
-  const location = useLocation();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const tabs = [
-    { name: "Home", link: "/" },
-    { name: "Webseries", link: "/webseries" },
-    { name: "Movies", link: "/movies" },
-    { name: "Commercials", link: "/commercials" },
-    { name: "About", link: "/about" },
-    { name: "Videos", link: "/music/videos" }, // updated link to match route
-  ];
-
   const videos = [
     { title: "Dummy Video 1", url: "https://www.youtube.com/embed/Y20Uc_GffDY" },
     { title: "Dummy Video 2", url: "https://www.youtube.com/embed/JPzeJVq0XYU" },
@@ -29,37 +16,7 @@ export default function Videos() {
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
 
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center">
-        <Link
-          to="/"
-          style={{ fontFamily: "'Anton', sans-serif" }}
-          className="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
-        >
-          RS
-        </Link>
-
-        <div className="relative">
-          <button onClick={() => setMenuOpen(!menuOpen)} className="text-white text-3xl focus:outline-none">
-            {menuOpen ? <FiX /> : <FiMenu />}
-          </button>
-
-          <div className={`absolute right-0 mt-3 w-48 bg-black/90 rounded-xl shadow-lg flex flex-col py-2 z-30 transform transition-all duration-300 ease-in-out origin-top ${menuOpen ? "translate-y-0 opacity-100" : "-translate-y-5 opacity-0 pointer-events-none"}`}>
-            {tabs.map((tab) => (
-              <Link
-                key={tab.name}
-                to={tab.link}
-                onClick={() => setMenuOpen(false)}
-                className={`px-4 py-2 text-white/80 hover:text-white uppercase tracking-[0.25em] transition-colors ${
-                  location.pathname === tab.link ? "font-semibold text-white" : ""
-                }`}
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                {tab.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* Main Content */}
       <main className="relative z-10 pt-32 px-6 pb-16 max-w-7xl mx-auto">
