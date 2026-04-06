@@ -115,33 +115,39 @@ const copyToClipboard = () => {
     <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900 overflow-hidden">
 
       {/* HEADER */}
-      <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center" />
+      <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-4 py-5 sm:px-8 sm:py-6 flex justify-between items-center" />
 
       {/* MAIN */}
-      <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">
+      <main className="relative z-10 flex flex-col items-center text-center px-4 pt-24 sm:px-6 sm:pt-28">
 
         <Link to="/about">
         <h1
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-8xl mb-4 uppercase tracking-widest hover:opacity-80 transition"
+          className="mb-3 text-4xl uppercase tracking-[0.18em] transition hover:opacity-80 sm:mb-4 sm:text-6xl sm:tracking-[0.24em] md:text-8xl md:tracking-widest"
         >
           Ribhu Sarma
         </h1>
       </Link>
 
-        <span style={{ fontFamily: "'Montserrat', sans-serif" }} className="text-4xl tracking-[0.35em] uppercase mb-6">
+        <span
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="mb-5 max-w-[20rem] text-lg uppercase tracking-[0.22em] sm:mb-6 sm:max-w-none sm:text-2xl sm:tracking-[0.28em] md:text-4xl md:tracking-[0.35em]"
+        >
           Director of Photography
         </span>
 
-        <div className="h-px w-24 bg-gray-400 mb-10" />
+        <div className="mb-8 h-px w-20 bg-gray-400 sm:mb-10 sm:w-24" />
 
-        <p style={{ fontFamily: "'Montserrat', sans-serif" }} className="max-w-3xl mb-20 text-2xl">
+        <p
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="mb-14 max-w-xl px-2 text-base leading-relaxed sm:mb-20 sm:max-w-3xl sm:px-0 sm:text-xl md:text-2xl"
+        >
           Crafting images with light, movement, and emotion—across films,
           commercials, music videos and documentaries.
         </p>
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-[1700px]">
+        <div className="grid w-full max-w-[1700px] grid-cols-1 gap-10 sm:gap-14 md:grid-cols-2">
 
           {projects.map((project, index) => (
 
@@ -163,7 +169,7 @@ const copyToClipboard = () => {
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
                   <h2
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
-                    className="text-white text-2xl tracking-widest uppercase"
+                    className="text-center text-lg uppercase tracking-[0.2em] text-white sm:text-2xl sm:tracking-widest"
                   >
                     {project.title}
                   </h2>
