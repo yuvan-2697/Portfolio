@@ -43,7 +43,7 @@ export default function NonCinema() {
 
             <div
               key={index}
-              className="group flex justify-center cursor-pointer"
+              className="group flex flex-col items-center cursor-pointer"
               onClick={() => {
                 if (project.video) {
                   setCurrentVideo(project.video);
@@ -52,7 +52,7 @@ export default function NonCinema() {
               }}
             >
 
-              <div className="relative inline-block">
+            <div className="relative inline-block">
 
                 <img
                   src={project.image}
@@ -70,6 +70,13 @@ export default function NonCinema() {
                 </div>
 
               </div>
+
+              <h3
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className="mt-4 text-center text-base uppercase tracking-[0.18em] text-gray-800 sm:text-lg sm:tracking-widest"
+              >
+                Kaipulla Music Video
+              </h3>
 
             </div>
 
