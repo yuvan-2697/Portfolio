@@ -77,7 +77,7 @@ export default function Home() {
   };
 
   // ✅ COPY FIX (works everywhere)
-const [copied, setCopied] = useState(false);
+const [, setCopied] = useState(false);
 
 const copyToClipboard = () => {
   if (navigator.clipboard) {

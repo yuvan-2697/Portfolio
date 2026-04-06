@@ -16,7 +16,10 @@ export default function Videos() {
     <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
 
       {/* Header */}
-      <SiteHeader />
+      <SiteHeader
+        logoClassName="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
+        buttonClassName="text-white text-3xl focus:outline-none"
+      />
 
       {/* Main Content */}
       <main className="relative z-10 pt-32 px-6 pb-16 max-w-7xl mx-auto">

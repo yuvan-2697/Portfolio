@@ -55,35 +55,36 @@ export default function Movies() {
       <SiteHeader />
 
       {/* HEADING */}
-      <div className="relative z-10 pt-28 px-6 max-w-[1700px] mx-auto">
+      <div className="relative z-10 pt-28 px-4 sm:px-6 max-w-[1700px] mx-auto">
 
-        <div className="relative flex items-center justify-center mb-6">
+        <div className="flex flex-col items-center gap-6 mb-6 lg:relative lg:min-h-[220px] lg:justify-center">
 
           {/* TITLE */}
           <h1
             style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="text-6xl md:text-8xl uppercase tracking-widest text-black"
+            className="text-4xl sm:text-6xl md:text-8xl uppercase tracking-[0.2em] sm:tracking-widest text-center text-black"
           >
             Movies
           </h1>
 
           {/* FILTER */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 flex flex-col gap-3 w-[260px]">
+          <div className="w-full max-w-md lg:absolute lg:right-0 lg:top-1/2 lg:w-[260px] lg:max-w-none lg:-translate-y-1/2">
 
             <h2
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="uppercase font-semibold text-gray-500 tracking-wider text-right text-sm"
+              className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-gray-500 lg:text-right"
             >
               Filter by Role
             </h2>
 
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {roles.map(role => (
 
               <button
                 key={role}
                 onClick={() => setFilter(role)}
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`w-full text-right px-4 py-2 rounded-lg transition ${
+                className={`w-full rounded-lg px-4 py-3 text-center text-sm transition sm:text-base lg:text-right ${
                   filter === role
                     ? "bg-black text-white"
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -93,6 +94,7 @@ export default function Movies() {
               </button>
 
             ))}
+            </div>
 
           </div>
 
@@ -104,7 +106,7 @@ export default function Movies() {
       </div>
 
       {/* GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto px-6 pb-20">
+      <div className="grid grid-cols-1 gap-10 max-w-6xl mx-auto px-4 pb-20 sm:px-6 md:grid-cols-2">
 
         {filteredProjects.map((proj) => (
 
@@ -120,7 +122,7 @@ export default function Movies() {
             <img
               src={proj.image}
               alt={proj.title}
-              className="w-full h-[420px] object-cover transition duration-500 group-hover:scale-105"
+              className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[420px]"
             />
 
             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
@@ -136,7 +138,7 @@ export default function Movies() {
 
             <h3
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mt-4 text-lg uppercase tracking-widest text-gray-800"
+              className="mt-4 text-base uppercase tracking-[0.18em] text-gray-800 sm:text-lg sm:tracking-widest"
             >
               {proj.title}
             </h3>

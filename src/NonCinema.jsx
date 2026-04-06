@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import SiteHeader from "./components/SiteHeader";
 import kaipulla from "./assets/kaipulla1.jpeg";
 
-const img2 = "https://picsum.photos/800/600?random=2";
-const img3 = "https://picsum.photos/800/600?random=3";
-const img4 = "https://picsum.photos/800/600?random=4";
-
 export default function NonCinema() {
 
   // ✅ NEW (video popup)
@@ -18,21 +14,6 @@ export default function NonCinema() {
       image: kaipulla,
       title: "Kaipulla",
       video: "https://www.youtube.com/embed/mG1ajyL_vX4"
-    },
-    {
-      image: img2,
-      title: "Project Two",
-      video: ""
-    },
-    {
-      image: img3,
-      title: "Project Three",
-      video: ""
-    },
-    {
-      image: img4,
-      title: "Project Four",
-      video: ""
     },
   ];
 
