@@ -115,11 +115,7 @@ export default function Home() {
 
       <main className="relative z-10 flex flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28">
         <section className="mb-14 w-full max-w-6xl border border-[#6f4a2c]/14 bg-[linear-gradient(180deg,rgba(222,208,192,0.86),rgba(210,194,176,0.9))] px-5 py-8 shadow-[0_22px_45px_rgba(42,27,15,0.12),0_55px_120px_rgba(83,54,28,0.18)] sm:mb-20 sm:px-8 sm:py-12 md:px-12">
-          <div className="mx-auto mb-6 flex w-fit items-center gap-3 text-[0.65rem] uppercase tracking-[0.38em] text-[#6e4b2d] sm:mb-8 sm:text-xs">
-            <span className="h-px w-8 bg-[#8f6945]/55 sm:w-12" />
-            Cinematography Portfolio
-            <span className="h-px w-8 bg-[#8f6945]/55 sm:w-12" />
-          </div>
+          <div className="mx-auto mb-6 h-px w-24 bg-[#8f6945]/55 sm:mb-8 sm:w-32" />
 
           <Link to="/about">
             <h1
@@ -150,8 +146,9 @@ export default function Home() {
 
             <div
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="border-t border-[#8f6945]/18 pt-4 text-center text-xs uppercase tracking-[0.28em] text-[#5c442f] md:text-left"
+              className="pt-4 text-center text-xs uppercase tracking-[0.28em] text-[#5c442f] md:text-left"
             >
+              <div className="mx-auto mb-4 h-px w-16 bg-[#8f6945]/55 md:mx-0 md:w-20" />
               <div className="text-sm font-semibold tracking-[0.32em] text-[#4a3321] sm:text-base">
                 Chennai
               </div>
