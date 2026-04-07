@@ -99,21 +99,15 @@ export default function About() {
               style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed"
             >
-              Hey there! I’m Ribhu Sarma, an engineering grad from Chennai who
-              accidentally fell in love with cinematography. I chase stories
-              with my camera, playing with light, movement, and emotion to turn
-              ordinary moments into something cinematic.
+            Hi, I’m Ribhu Sarma, a cinematographer driven by a deep passion for visual storytelling. What started as curiosity has grown into a dedicated pursuit of capturing stories through light, movement, and emotion, turning everyday moments into cinematic experiences.  
             </p>
 
             <p
               style={{ fontFamily: "'Montserrat', sans-serif" }}
               className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed"
             >
-              When I’m not filming, you’ll find me hunting for the perfect cup
-              of coffee, devouring anything edible, or catching up on my
-              favorite hobby—sleeping like it’s an art form. I’m all about
-              storytelling, good vibes, and connecting with fellow humans who
-              love a little chaos, creativity, and caffeine.
+              
+            Beyond filmmaking, I’m drawn to observing people, places, and fleeting moments that often go unnoticed—finding inspiration in the details that shape authentic stories. I value creativity, meaningful storytelling, and genuine connections, and I’m always open to collaborating with like-minded individuals who share a passion for visual expression.  
             </p>
 
           </div>
