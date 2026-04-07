@@ -1,5 +1,5 @@
-// events/Videos.jsx
 import React from "react";
+import PageBackdrop from "../components/PageBackdrop";
 import SiteHeader from "../components/SiteHeader";
 
 export default function Videos() {
@@ -13,33 +13,25 @@ export default function Videos() {
   ];
 
   return (
-    <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
+    <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
+      <PageBackdrop />
 
-      {/* Header */}
-      <SiteHeader
-        logoClassName="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
-        buttonClassName="text-white text-3xl focus:outline-none"
-      />
+      <SiteHeader />
 
-      {/* Main Content */}
-      <main className="relative z-10 pt-32 px-6 pb-16 max-w-7xl mx-auto">
-        {/* Overall Heading */}
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pb-16 pt-32">
         <h1
-          style={{ fontFamily: "'Simplifica', sans-serif" }}
-          className="text-5xl sm:text-6xl md:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-12 text-center animate-fade-in-slow"
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="mb-12 text-center text-4xl uppercase tracking-[0.2em] text-[#241b15] sm:text-5xl md:text-6xl"
         >
           Music Videos
         </h1>
 
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
           {videos.map((video, idx) => (
             <div key={idx} className="flex flex-col items-center gap-4">
-
-              {/* Embedded YouTube Video */}
-              <div className="w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+              <div className="aspect-video w-full overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]">
                 <iframe
-                  className="w-full h-full"
+                  className="h-full w-full"
                   src={video.url}
                   title={video.title}
                   frameBorder="0"
@@ -48,35 +40,23 @@ export default function Videos() {
                 />
               </div>
 
-              {/* Heading Below Video */}
-              <h1
-                style={{ fontFamily: "'Simplifica', sans-serif" }}
-                className="text-2xl sm:text-3xl md:text-3xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mt-4 animate-fade-in-slow text-center"
+              <h2
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className="mt-4 text-center text-lg uppercase tracking-[0.18em] text-[#4a3321] sm:text-xl md:text-2xl"
               >
                 {video.title}
-              </h1>
-
+              </h2>
             </div>
           ))}
         </div>
-
       </main>
 
-      {/* Footer */}
-      <footer className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+      <footer
+        className="absolute bottom-0 w-full px-6 pb-6 text-center text-xs text-[#6f5740]"
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+      >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
-
-      {/* Animation CSS */}
-      <style>{`
-        @keyframes fadeInSlow {
-          0% { opacity: 0; transform: translateY(20px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-slow {
-          animation: fadeInSlow 1.5s ease forwards;
-        }
-      `}</style>
     </div>
   );
 }

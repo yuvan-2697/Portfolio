@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FiMail, FiPhone, FiInstagram } from "react-icons/fi";
 import portrait from "./assets/ribhuabout.jpg";
+import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 
 export default function About() {
@@ -53,11 +54,8 @@ export default function About() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900">
-
-      {/* Background effects */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.25),transparent_60%)]"></div>
-      <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
+      <PageBackdrop />
 
       {/* HEADER */}
       <SiteHeader />
@@ -71,7 +69,7 @@ export default function About() {
           <img
             src={portrait}
             alt="Ribhu Sarma"
-            className={`shadow-xl w-full max-w-[500px] h-auto object-cover mx-auto md:mx-0 transition-all duration-700 ${
+            className={`mx-auto h-auto w-full max-w-[500px] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition-all duration-700 md:mx-0 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             } hover:scale-105`}
           />
@@ -90,21 +88,21 @@ export default function About() {
 
             <h1
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-5xl md:text-6xl tracking-widest uppercase text-black mb-6"
+              className="mb-6 text-5xl uppercase tracking-[0.2em] text-[#241b15] md:text-6xl"
             >
               About Me
             </h1>
 
             <p
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed"
+              className="mb-6 text-lg leading-relaxed text-[#3d3126] md:text-xl"
             >
             Hi, I’m Ribhu Sarma, a cinematographer driven by a deep passion for visual storytelling. What started as curiosity has grown into a dedicated pursuit of capturing stories through light, movement, and emotion, turning everyday moments into cinematic experiences.  
             </p>
 
             <p
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="text-gray-700 text-lg md:text-xl mb-6 leading-relaxed"
+              className="mb-6 text-lg leading-relaxed text-[#3d3126] md:text-xl"
             >
               
             Beyond filmmaking, I’m drawn to observing people, places, and fleeting moments that often go unnoticed—finding inspiration in the details that shape authentic stories. I value creativity, meaningful storytelling, and genuine connections, and I’m always open to collaborating with like-minded individuals who share a passion for visual expression.  
@@ -122,7 +120,7 @@ export default function About() {
                 href={contact.link}
                 target="_blank"
                 rel="noreferrer"
-                className={`flex items-center gap-4 text-right text-lg md:text-xl font-semibold transition-all duration-700 hover:text-black ${
+                className={`flex items-center gap-4 text-right text-lg font-semibold text-[#5c442f] transition-all duration-700 hover:text-[#241b15] md:text-xl ${
                   loaded
                     ? "opacity-100 translate-x-0"
                     : "opacity-0 translate-x-10"
@@ -148,7 +146,7 @@ export default function About() {
       {/* FOOTER */}
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-gray-600"
+        className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-[#6f5740]"
       >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 import kaipulla from "./assets/kaipulla1.jpeg";
 
@@ -19,7 +20,8 @@ export default function NonCinema() {
 
   return (
 
-    <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900 overflow-hidden">
+    <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
+      <PageBackdrop />
 
       {/* HEADER */}
       <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center" />
@@ -29,12 +31,12 @@ export default function NonCinema() {
 
         <h1
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="text-6xl md:text-8xl uppercase tracking-widest mb-6"
+          className="mb-6 text-6xl uppercase tracking-[0.2em] md:text-8xl"
         >
           Non Cinema
         </h1>
 
-        <div className="h-px w-24 bg-gray-400 mb-10" />
+        <div className="mb-10 h-px w-24 bg-[#8f6945]/55" />
 
         {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-[1700px]">
@@ -57,10 +59,10 @@ export default function NonCinema() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-[95%] mx-auto h-[560px] object-cover transition duration-500 group-hover:scale-105"
+                  className="mx-auto h-[560px] w-[95%] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition group-hover:opacity-100">
                   <h2
                     style={{ fontFamily: "'Montserrat', sans-serif" }}
                     className="text-white text-2xl tracking-widest uppercase"
@@ -73,7 +75,7 @@ export default function NonCinema() {
 
               <h3
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-4 text-center text-base uppercase tracking-[0.18em] text-gray-800 sm:text-lg sm:tracking-widest"
+                className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
               >
                 Kaipulla Music Video
               </h3>
@@ -108,7 +110,7 @@ export default function NonCinema() {
       {/* FOOTER */}
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="w-full text-center px-6 py-10 text-xs text-black"
+        className="w-full text-center px-6 py-10 text-xs text-[#6f5740]"
       >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>

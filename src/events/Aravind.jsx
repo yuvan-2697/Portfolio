@@ -1,63 +1,40 @@
-// events/Aravind.jsx
 import React from "react";
+import PageBackdrop from "../components/PageBackdrop";
 import SiteHeader from "../components/SiteHeader";
 
 export default function Aravind() {
   return (
-    <div className="relative min-h-screen text-white font-sans selection:bg-white/20 selection:text-white bg-black">
+    <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
+      <PageBackdrop />
 
-      {/* Header */}
-      <SiteHeader
-        logoClassName="text-lg tracking-[0.35em] uppercase text-white/90 hover:text-white transition"
-        buttonClassName="text-white text-3xl focus:outline-none"
-      />
+      <SiteHeader />
 
-      {/* Main Content */}
-      <main className="relative z-10 pt-32 px-6 pb-16 max-w-6xl mx-auto flex flex-col items-center gap-12">
-
-        {/* Heading */}
+      <main className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 px-6 pb-16 pt-32">
         <h1
-            style={{ fontFamily: "'Simplifica', sans-serif" }}
-            className="text-5xl md:text-7xl tracking-widest uppercase bg-gradient-to-r from-gray-300 via-white to-gray-300 bg-clip-text text-transparent mb-6 animate-fade-in-slow text-center"
-            >
-            We Need to Talk – A Standup Show
-            </h1>
+          style={{ fontFamily: "'Montserrat', sans-serif" }}
+          className="mb-6 text-center text-4xl uppercase tracking-[0.2em] text-[#241b15] md:text-6xl"
+        >
+          We Need to Talk - A Standup Show
+        </h1>
 
-
-        {/* Embedded YouTube Video */}
-        <div className="w-full max-w-4xl aspect-video rounded-xl overflow-hidden shadow-2xl">
+        <div className="aspect-video w-full max-w-4xl overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]">
           <iframe
-            className="w-full h-full"
+            className="h-full w-full"
             src="https://www.youtube.com/embed/xPt1j0HZFOo"
-            title="We Need to Talk Da – A Standup Show"
+            title="We Need to Talk Da - A Standup Show"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </div>
-
       </main>
 
-      {/* Footer */}
-      <footer className="absolute bottom-0 w-full text-center px-6 pb-6 text-xs text-white/60" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+      <footer
+        className="absolute bottom-0 w-full px-6 pb-6 text-center text-xs text-[#6f5740]"
+        style={{ fontFamily: "'Montserrat', sans-serif" }}
+      >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
-
-      {/* Gradient Animation CSS */}
-      <style>{`
-        @keyframes gradientAnimation {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient-text {
-          background: linear-gradient(270deg, #ccc, #fff, #ccc);
-          background-size: 600% 600%;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          animation: gradientAnimation 8s ease infinite;
-        }
-      `}</style>
     </div>
   );
 }

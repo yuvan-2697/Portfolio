@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 
 import cg from "./assets/cg.png";
@@ -50,11 +51,8 @@ export default function Commercials() {
     filter === "All" ? projects : projects.filter(p => p.description === filter);
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#D9D2C8] via-[#CFC8BE] to-[#BFB7AC] text-gray-900">
-
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(255,255,255,0.25),transparent_60%)]"></div>
-      <div className="pointer-events-none absolute inset-0 opacity-20 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+    <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
+      <PageBackdrop />
 
       {/* HEADER */}
       <SiteHeader />
@@ -66,7 +64,7 @@ export default function Commercials() {
 
           <h1
             style={{ fontFamily: "'Montserrat', sans-serif" }}
-            className="text-4xl sm:text-6xl md:text-8xl uppercase tracking-[0.2em] sm:tracking-widest text-center text-black"
+            className="text-4xl sm:text-6xl md:text-8xl uppercase tracking-[0.2em] sm:tracking-widest text-center text-[#241b15]"
           >
             Commercials
           </h1>
@@ -76,7 +74,7 @@ export default function Commercials() {
 
             <h2
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-gray-500 lg:text-right"
+              className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[#6f5740] lg:text-right"
             >
               Filter by Role
             </h2>
@@ -89,8 +87,8 @@ export default function Commercials() {
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className={`w-full rounded-lg px-4 py-3 text-center text-sm transition sm:text-base lg:text-right ${
                   filter === role
-                    ? "bg-black text-white"
-                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                    ? "bg-[#4a3321] text-[#f4ede3]"
+                    : "bg-[#d8c7b4] text-[#5c442f] hover:bg-[#ccb79f]"
                 }`}
               >
                 {role}
@@ -102,7 +100,7 @@ export default function Commercials() {
 
         </div>
 
-        <div className="h-px w-24 bg-gray-400 mx-auto mb-10" />
+        <div className="mx-auto mb-10 h-px w-24 bg-[#8f6945]/55" />
 
       </div>
 
@@ -113,7 +111,7 @@ export default function Commercials() {
 
           <div
             key={proj.title}
-            className="relative group overflow-hidden cursor-pointer"
+            className="relative group cursor-pointer"
             onClick={() => {
               setVideoList(proj.videos);
               setVideoIndex(0);
@@ -124,10 +122,10 @@ export default function Commercials() {
             <img
               src={proj.image}
               alt={proj.title}
-              className="h-[320px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[420px]"
+              className="h-[320px] w-full object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105 sm:h-[420px]"
             />
 
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition duration-300 group-hover:opacity-100">
 
               <p
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -140,7 +138,7 @@ export default function Commercials() {
 
             <h3
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mt-4 text-base uppercase tracking-[0.18em] text-gray-800 sm:text-lg sm:tracking-widest"
+              className="mt-4 text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
             >
               {proj.title}
             </h3>
@@ -199,7 +197,7 @@ export default function Commercials() {
       {/* FOOTER */}
       <footer
         style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="w-full text-center px-6 pb-6 text-xs text-gray-500"
+        className="w-full text-center px-6 pb-6 text-xs text-[#6f5740]"
       >
         © {new Date().getFullYear()} Ribhu Sarma. All rights reserved.
       </footer>
