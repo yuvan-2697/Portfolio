@@ -4,7 +4,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { siteTabs } from "../siteNavigation";
 
 export default function SiteHeader({
-  headerClassName = "fixed top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center",
+  headerClassName = "absolute top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center",
   logoClassName = "text-lg tracking-[0.35em] uppercase text-gray-800 hover:text-black transition",
   buttonClassName = "text-gray-800 text-3xl",
 }) {
