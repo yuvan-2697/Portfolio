@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 import kaipulla from "./assets/kaipulla1.jpeg";
+import standup from "./assets/sa.png";
 
 export default function NonCinema() {
 
@@ -14,7 +15,16 @@ export default function NonCinema() {
     {
       image: kaipulla,
       title: "Kaipulla",
+      subtitle: "Kaipulla Music Video",
+      role: "Associate DOP",
       video: "https://www.youtube.com/embed/mG1ajyL_vX4"
+    },
+    {
+      image: standup,
+      title: "We Need to Talk",
+      subtitle: "We Need to Talk",
+      role: "Associate DOP",
+      video: "https://www.youtube.com/embed/IVDxsK6U220"
     },
   ];
 
@@ -77,8 +87,15 @@ export default function NonCinema() {
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
                 className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
               >
-                Kaipulla Music Video
+                {project.subtitle}
               </h3>
+
+              <p
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+                className="mt-2 text-center text-xs uppercase tracking-[0.24em] text-[#7f6246] sm:text-sm"
+              >
+                {project.role}
+              </p>
 
             </div>
 
