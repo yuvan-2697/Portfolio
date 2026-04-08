@@ -41,7 +41,7 @@ export default function NonCinema() {
 
         <h1
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="mb-6 text-6xl uppercase tracking-[0.2em] md:text-8xl"
+          className="mb-6 text-4xl uppercase tracking-[0.2em] sm:text-6xl md:text-8xl"
         >
           Non Cinema
         </h1>
