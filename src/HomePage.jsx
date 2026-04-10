@@ -104,18 +104,18 @@ export default function Home() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#b8a690] text-[#241b15]">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(239,230,217,0.52),rgba(184,166,144,0.96))]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_top,rgba(255,245,234,0.58),transparent_56%)]" />
-      <div className="pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#d2b89a]/24 blur-3xl sm:h-96 sm:w-96" />
-      <div className="pointer-events-none absolute -right-20 top-[24rem] h-72 w-72 rounded-full bg-[#6b4728]/18 blur-3xl sm:h-[26rem] sm:w-[26rem]" />
+      <div className="portfolio-breathe pointer-events-none absolute inset-x-0 top-0 h-[34rem] bg-[radial-gradient(circle_at_top,rgba(255,245,234,0.58),transparent_56%)]" />
+      <div className="portfolio-drift-left pointer-events-none absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#d2b89a]/24 blur-3xl sm:h-96 sm:w-96" />
+      <div className="portfolio-drift-right pointer-events-none absolute -right-20 top-[24rem] h-72 w-72 rounded-full bg-[#6b4728]/18 blur-3xl sm:h-[26rem] sm:w-[26rem]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[18rem] bg-[linear-gradient(180deg,transparent,rgba(86,58,35,0.14))]" />
-      <div className="pointer-events-none absolute left-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:left-10 sm:h-32" />
-      <div className="pointer-events-none absolute right-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:right-10 sm:h-32" />
+      <div className="portfolio-line-draw pointer-events-none absolute left-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:left-10 sm:h-32" />
+      <div className="portfolio-line-draw pointer-events-none absolute right-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:right-10 sm:h-32" />
 
       <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-4 py-5 sm:px-8 sm:py-6 flex justify-between items-center" />
 
       <main className="relative z-10 flex flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28">
-        <section className="mb-14 w-full max-w-6xl border border-[#6f4a2c]/14 bg-[linear-gradient(180deg,rgba(222,208,192,0.86),rgba(210,194,176,0.9))] px-5 py-8 shadow-[0_22px_45px_rgba(42,27,15,0.12),0_55px_120px_rgba(83,54,28,0.18)] sm:mb-20 sm:px-8 sm:py-12 md:px-12">
-          <div className="mx-auto mb-6 h-px w-24 bg-[#8f6945]/55 sm:mb-8 sm:w-32" />
+        <section className="portfolio-rise mb-14 w-full max-w-6xl border border-[#6f4a2c]/14 bg-[linear-gradient(180deg,rgba(222,208,192,0.86),rgba(210,194,176,0.9))] px-5 py-8 shadow-[0_22px_45px_rgba(42,27,15,0.12),0_55px_120px_rgba(83,54,28,0.18)] sm:mb-20 sm:px-8 sm:py-12 md:px-12">
+          <div className="portfolio-line-draw mx-auto mb-6 h-px w-24 bg-[#8f6945]/55 sm:mb-8 sm:w-32" />
 
           <Link to="/about">
             <h1
@@ -133,7 +133,7 @@ export default function Home() {
             Director of Photography
           </span>
 
-          <div className="mx-auto mb-8 h-px w-16 bg-[#8f6945]/55 sm:mb-10 sm:w-24" />
+          <div className="portfolio-line-draw mx-auto mb-8 h-px w-16 bg-[#8f6945]/55 sm:mb-10 sm:w-24" />
 
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-[minmax(0,2.2fr)_minmax(220px,1fr)] md:items-start md:text-left">
             <p
@@ -179,10 +179,11 @@ export default function Home() {
             <div
               id={`img-${index}`}
               key={index}
-              className="group flex justify-center cursor-pointer"
+              className="portfolio-gallery-card group flex justify-center cursor-pointer"
+              style={{ animationDelay: `${Math.min(index * 55, 660)}ms` }}
               onClick={() => project.type === "dug" && setVideoOpen(true)}
             >
-              <div className="relative inline-block">
+              <div className="portfolio-gallery-frame relative inline-block">
                 <img
                   src={project.image}
                   alt={project.title}

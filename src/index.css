@@ -108,3 +108,108 @@ body {
     linear-gradient(90deg, rgba(0,0,0,0.12) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
+@keyframes portfolio-breathe {
+  0%, 100% {
+    opacity: 0.72;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04) translate3d(0, -10px, 0);
+  }
+}
+
+@keyframes portfolio-drift-left {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -14px, 0) scale(1.04);
+  }
+}
+
+@keyframes portfolio-drift-right {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-16px, 18px, 0) scale(1.03);
+  }
+}
+
+@keyframes portfolio-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes portfolio-line-draw {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.portfolio-breathe {
+  animation: portfolio-breathe 9s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.portfolio-drift-left {
+  animation: portfolio-drift-left 13s ease-in-out infinite;
+}
+
+.portfolio-drift-right {
+  animation: portfolio-drift-right 15s ease-in-out infinite;
+}
+
+.portfolio-rise {
+  animation: portfolio-rise 900ms ease-out both;
+}
+
+.portfolio-line-draw {
+  animation: portfolio-line-draw 900ms ease-out both;
+  transform-origin: center;
+}
+
+.portfolio-gallery-card {
+  animation: portfolio-rise 800ms ease-out both;
+  will-change: transform, opacity;
+}
+
+.portfolio-gallery-frame {
+  transition: transform 600ms ease, filter 600ms ease;
+}
+
+.portfolio-gallery-card:hover .portfolio-gallery-frame {
+  filter: saturate(1.04) contrast(1.02);
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-breathe,
+  .portfolio-drift-left,
+  .portfolio-drift-right,
+  .portfolio-rise,
+  .portfolio-line-draw,
+  .portfolio-gallery-card {
+    animation: none;
+  }
+
+  .portfolio-gallery-frame,
+  .portfolio-gallery-card:hover .portfolio-gallery-frame {
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}

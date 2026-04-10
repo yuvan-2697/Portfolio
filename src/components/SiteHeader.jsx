@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
 import { siteTabs } from "../siteNavigation";
 
 export default function SiteHeader({
   headerClassName = "absolute top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center",
   logoClassName = "text-lg tracking-[0.35em] uppercase text-[#4a3321] hover:text-[#241b15] transition",
-  buttonClassName = "text-[#4a3321] text-3xl",
+  buttonClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#6f4a2c]/18 bg-[#eadfce]/42 text-[#4a3321] shadow-[0_12px_30px_rgba(48,31,17,0.12)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#6f4a2c]/32 hover:bg-[#efe5d8]/68 hover:shadow-[0_18px_38px_rgba(48,31,17,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
 }) {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,7 +57,55 @@ export default function SiteHeader({
           onClick={() => setMenuOpen((open) => !open)}
           className={buttonClassName}
         >
-          {menuOpen ? <FiX /> : <FiMenu />}
+          <span className="sr-only">
+            {menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          </span>
+          <span
+            aria-hidden="true"
+            className={`relative h-[18px] w-[22px] transition duration-300 ${
+              menuOpen ? "scale-95" : "scale-100"
+            }`}
+          >
+            <span
+              className={`absolute -right-[3px] -top-[3px] h-[5px] w-[5px] rounded-full bg-[#efe5d8] transition duration-300 group-hover:scale-125 group-hover:bg-current ${
+                menuOpen ? "scale-0 opacity-0" : "scale-100 opacity-70"
+              }`}
+            />
+            <span
+              className={`absolute left-[5px] top-0 h-[4px] w-3 rounded-t-md border border-current border-b-0 transition duration-300 group-hover:-translate-y-0.5 ${
+                menuOpen ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
+              }`}
+            />
+            <span
+              className={`absolute inset-x-0 bottom-0 h-[14px] overflow-hidden rounded-[4px] border border-current transition duration-300 group-hover:shadow-[0_0_14px_rgba(74,51,33,0.22)] ${
+                menuOpen ? "rounded-full" : "rounded-[4px]"
+              }`}
+            >
+              <span className="absolute -left-6 top-0 h-full w-4 rotate-12 bg-white/35 opacity-0 transition duration-500 group-hover:left-7 group-hover:opacity-100" />
+            </span>
+            <span
+              className={`absolute left-1/2 top-[8px] h-[7px] w-[7px] -translate-x-1/2 rounded-full border border-current transition duration-300 group-hover:scale-125 ${
+                menuOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
+              }`}
+            >
+              <span className="absolute left-1/2 top-1/2 h-[3px] w-[3px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-current opacity-0 transition duration-300 group-hover:opacity-100" />
+            </span>
+            <span
+              className={`absolute right-[3px] top-[7px] h-[2px] w-[2px] rounded-full bg-current transition duration-300 group-hover:scale-150 ${
+                menuOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute left-1/2 top-[10px] h-px w-4 -translate-x-1/2 bg-current transition duration-300 ${
+                menuOpen ? "rotate-45 opacity-100" : "rotate-0 opacity-0"
+              }`}
+            />
+            <span
+              className={`absolute left-1/2 top-[10px] h-px w-4 -translate-x-1/2 bg-current transition duration-300 ${
+                menuOpen ? "-rotate-45 opacity-100" : "rotate-0 opacity-0"
+              }`}
+            />
+          </span>
         </button>
 
         <div
