@@ -3,6 +3,7 @@ import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 import kaipulla from "./assets/kaipulla1.jpeg";
 import standup from "./assets/sa.png";
+import hyderabadGig from "./assets/hq721.jpg";
 
 export default function NonCinema() {
 
@@ -25,6 +26,14 @@ export default function NonCinema() {
       subtitle: "We Need to Talk",
       role: "Associate DOP",
       video: "https://www.youtube.com/embed/IVDxsK6U220"
+    },
+    {
+      image: hyderabadGig,
+      title: "Hyderabad Gig",
+      subtitle: "Hyderabad Gig",
+      role: "Assistant DOP",
+      fit: "square",
+      link: "https://youtube.com/playlist?list=PLGjAbxgreXJwhBta2dH0gwdBD54bryNKV&si=yfb6tTRAf1jebYm9"
     },
   ];
 
@@ -57,6 +66,11 @@ export default function NonCinema() {
               key={index}
               className="group flex flex-col items-center cursor-pointer"
               onClick={() => {
+                if (project.link) {
+                  window.open(project.link, "_blank", "noopener,noreferrer");
+                  return;
+                }
+
                 if (project.video) {
                   setCurrentVideo(project.video);
                   setVideoOpen(true);
@@ -64,12 +78,22 @@ export default function NonCinema() {
               }}
             >
 
-            <div className="relative inline-block">
+            <div
+              className={
+                project.fit === "square"
+                  ? "relative h-[560px] w-[95%] max-w-[560px] overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]"
+                  : "relative inline-block"
+              }
+            >
 
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="mx-auto h-[560px] w-[95%] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105"
+                  className={
+                    project.fit === "square"
+                      ? "h-full w-full object-cover object-[78%_center] transition duration-500 group-hover:scale-105"
+                      : "mx-auto h-[560px] w-[95%] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105"
+                  }
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition group-hover:opacity-100">
