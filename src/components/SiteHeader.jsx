@@ -4,8 +4,8 @@ import { siteTabs } from "../siteNavigation";
 
 export default function SiteHeader({
   headerClassName = "absolute top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center",
-  logoClassName = "text-lg tracking-[0.35em] uppercase text-[#4a3321] hover:text-[#241b15] transition",
-  buttonClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#6f4a2c]/18 bg-[#eadfce]/42 text-[#4a3321] shadow-[0_12px_30px_rgba(48,31,17,0.12)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#6f4a2c]/32 hover:bg-[#efe5d8]/68 hover:shadow-[0_18px_38px_rgba(48,31,17,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
+  logoClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#4a3321]/28 bg-[#eadfce]/58 text-[#241b15] shadow-[0_12px_30px_rgba(48,31,17,0.15)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#241b15]/42 hover:bg-[#efe5d8]/78 hover:shadow-[0_18px_38px_rgba(48,31,17,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
+  buttonClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#4a3321]/28 bg-[#eadfce]/58 text-[#241b15] shadow-[0_12px_30px_rgba(48,31,17,0.15)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#241b15]/42 hover:bg-[#efe5d8]/78 hover:shadow-[0_18px_38px_rgba(48,31,17,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
 }) {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -46,7 +46,16 @@ export default function SiteHeader({
         style={{ fontFamily: "'Montserrat', sans-serif" }}
         className={logoClassName}
       >
-        RS
+        <span className="sr-only">Home</span>
+        <span
+          aria-hidden="true"
+          className="relative h-[20px] w-[22px] transition duration-300 group-hover:scale-105"
+        >
+          <span className="absolute left-1/2 top-[1px] h-[15px] w-[15px] -translate-x-1/2 rotate-45 rounded-[3px] border-l-2 border-t-2 border-current transition duration-300 group-hover:-translate-y-0.5" />
+          <span className="absolute bottom-0 left-[3px] h-[12px] w-4 rounded-[4px] border-2 border-current bg-[#eadfce]/20 transition duration-300 group-hover:bg-[#efe5d8]/50" />
+          <span className="absolute bottom-0 left-1/2 h-[7px] w-[5px] -translate-x-1/2 rounded-t-[3px] border-2 border-b-0 border-current transition duration-300 group-hover:h-[8px]" />
+          <span className="portfolio-home-dot absolute right-[5px] top-[11px] h-[4px] w-[4px] rounded-full bg-current" />
+        </span>
       </Link>
 
       <div ref={menuRef} className="relative">
@@ -72,19 +81,19 @@ export default function SiteHeader({
               }`}
             />
             <span
-              className={`absolute left-[5px] top-0 h-[4px] w-3 rounded-t-md border border-current border-b-0 transition duration-300 group-hover:-translate-y-0.5 ${
+              className={`absolute left-[5px] top-0 h-[4px] w-3 rounded-t-md border-2 border-current border-b-0 transition duration-300 group-hover:-translate-y-0.5 ${
                 menuOpen ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
               }`}
             />
             <span
-              className={`absolute inset-x-0 bottom-0 h-[14px] overflow-hidden rounded-[4px] border border-current transition duration-300 group-hover:shadow-[0_0_14px_rgba(74,51,33,0.22)] ${
+              className={`absolute inset-x-0 bottom-0 h-[14px] overflow-hidden rounded-[4px] border-2 border-current transition duration-300 group-hover:shadow-[0_0_14px_rgba(74,51,33,0.22)] ${
                 menuOpen ? "rounded-full" : "rounded-[4px]"
               }`}
             >
               <span className="absolute -left-6 top-0 h-full w-4 rotate-12 bg-white/35 opacity-0 transition duration-500 group-hover:left-7 group-hover:opacity-100" />
             </span>
             <span
-              className={`absolute left-1/2 top-[8px] h-[7px] w-[7px] -translate-x-1/2 rounded-full border border-current transition duration-300 group-hover:scale-125 ${
+              className={`absolute left-1/2 top-[8px] h-[7px] w-[7px] -translate-x-1/2 rounded-full border-2 border-current transition duration-300 group-hover:scale-125 ${
                 menuOpen ? "scale-0 opacity-0" : "scale-100 opacity-100"
               }`}
             >
@@ -96,12 +105,12 @@ export default function SiteHeader({
               }`}
             />
             <span
-              className={`absolute left-1/2 top-[10px] h-px w-4 -translate-x-1/2 bg-current transition duration-300 ${
+              className={`absolute left-1/2 top-[10px] h-[2px] w-4 -translate-x-1/2 bg-current transition duration-300 ${
                 menuOpen ? "rotate-45 opacity-100" : "rotate-0 opacity-0"
               }`}
             />
             <span
-              className={`absolute left-1/2 top-[10px] h-px w-4 -translate-x-1/2 bg-current transition duration-300 ${
+              className={`absolute left-1/2 top-[10px] h-[2px] w-4 -translate-x-1/2 bg-current transition duration-300 ${
                 menuOpen ? "-rotate-45 opacity-100" : "rotate-0 opacity-0"
               }`}
             />

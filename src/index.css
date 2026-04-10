@@ -160,6 +160,17 @@ body {
   }
 }
 
+@keyframes portfolio-home-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(74, 51, 33, 0.22);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(74, 51, 33, 0);
+    transform: scale(1.18);
+  }
+}
+
 .portfolio-breathe {
   animation: portfolio-breathe 9s ease-in-out infinite;
   transform-origin: top center;
@@ -196,12 +207,17 @@ body {
   transform: translateY(-6px);
 }
 
+.portfolio-home-dot {
+  animation: portfolio-home-pulse 2.4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .portfolio-breathe,
   .portfolio-drift-left,
   .portfolio-drift-right,
   .portfolio-rise,
   .portfolio-line-draw,
+  .portfolio-home-dot,
   .portfolio-gallery-card {
     animation: none;
   }
