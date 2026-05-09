@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
 import kaipulla from "./assets/kaipulla1.jpeg";
+import paalMazhai from "./assets/paal.jpeg";
 import standup from "./assets/sa.png";
+import thePaiyen from "./assets/pai.png";
 import hyderabadGig from "./assets/hq721.jpg";
 
 export default function NonCinema() {
@@ -26,6 +28,22 @@ export default function NonCinema() {
       subtitle: "We Need to Talk",
       role: "Associate DOP",
       video: "https://www.youtube.com/embed/IVDxsK6U220"
+    },
+    {
+      image: paalMazhai,
+      title: "Paal Mazhai",
+      subtitle: "Paal Mazhai",
+      role: "Associate DOP",
+      fit: "wide",
+      video: "https://www.youtube.com/embed/wH2XBhfxCdw"
+    },
+    {
+      image: thePaiyen,
+      title: "THE PAIYEN",
+      subtitle: "THE PAIYEN",
+      role: "DOP",
+      fit: "wide",
+      video: "https://www.youtube.com/embed/muUZc6Msu3w"
     },
     {
       image: hyderabadGig,
@@ -82,6 +100,8 @@ export default function NonCinema() {
               className={
                 project.fit === "square"
                   ? "relative h-[560px] w-[95%] max-w-[560px] overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]"
+                  : project.fit === "wide"
+                    ? "relative aspect-[16/9] w-[95%] overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]"
                   : "relative inline-block"
               }
             >
@@ -92,6 +112,8 @@ export default function NonCinema() {
                   className={
                     project.fit === "square"
                       ? "h-full w-full object-cover object-[78%_center] transition duration-500 group-hover:scale-105"
+                      : project.fit === "wide"
+                        ? "h-full w-full object-cover transition duration-500 group-hover:scale-105"
                       : "mx-auto h-[560px] w-[95%] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105"
                   }
                 />

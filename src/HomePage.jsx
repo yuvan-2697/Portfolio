@@ -6,6 +6,7 @@ import SiteHeader from "./components/SiteHeader";
 
 import tea1 from "./assets/tea1.jpg";
 import tea2 from "./assets/tea2.jpg";
+import pai from "./assets/pai.png";
 import tea3 from "./assets/tea3.jpg";
 import tea4 from "./assets/tea4.jpg";
 import tea5 from "./assets/tea5.jpg";
@@ -33,15 +34,20 @@ import celeb2 from "./assets/celeb2.png";
 
 export default function Home() {
   const [videoOpen, setVideoOpen] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState("");
   const [shareOpen, setShareOpen] = useState(false);
   const [shareLink, setShareLink] = useState("");
   const [, setCopied] = useState(false);
 
-  const youtubeLink = "https://www.youtube.com/embed/l36QKGyqFwE";
-
   const projects = [
     { image: tea1, title: "Soodana Koppaigal" },
     { image: tea2, title: "Soodana Koppaigal" },
+    {
+      image: pai,
+      title: "THE PAIYEN",
+      fit: "gallery",
+      video: "https://www.youtube.com/embed/muUZc6Msu3w",
+    },
     { image: tea3, title: "Soodana Koppaigal" },
     { image: tea4, title: "Soodana Koppaigal" },
     { image: tea5, title: "Soodana Koppaigal" },
@@ -181,13 +187,31 @@ export default function Home() {
               key={index}
               className="portfolio-gallery-card group flex justify-center cursor-pointer"
               style={{ animationDelay: `${Math.min(index * 55, 660)}ms` }}
-              onClick={() => project.type === "dug" && setVideoOpen(true)}
+              onClick={() => {
+                if (project.video) {
+                  setCurrentVideo(project.video);
+                  setVideoOpen(true);
+                } else if (project.type === "dug") {
+                  setCurrentVideo("https://www.youtube.com/embed/l36QKGyqFwE");
+                  setVideoOpen(true);
+                }
+              }}
             >
-              <div className="portfolio-gallery-frame relative inline-block">
+              <div
+                className={
+                  project.fit === "gallery"
+                    ? "portfolio-gallery-frame relative aspect-[8/5] w-full overflow-hidden"
+                    : "portfolio-gallery-frame relative inline-block"
+                }
+              >
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="block h-auto w-full"
+                  className={
+                    project.fit === "gallery"
+                      ? "block h-full w-full object-cover"
+                      : "block h-auto w-full"
+                  }
                 />
 
                 <button
@@ -211,7 +235,7 @@ export default function Home() {
           onClick={() => setVideoOpen(false)}
         >
           <div className="aspect-video w-[90%] md:w-[900px]">
-            <iframe src={youtubeLink} width="100%" height="100%" allowFullScreen />
+            <iframe src={currentVideo} width="100%" height="100%" allowFullScreen />
           </div>
         </div>
       )}
