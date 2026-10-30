@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { siteTabs } from "../siteNavigation";
 
 export default function SiteHeader({
-  headerClassName = "absolute top-0 left-0 w-full z-20 px-6 py-6 flex justify-between items-center",
+  headerClassName = "fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center",
   logoClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#6f4a2c]/20 bg-[#eadfce]/46 text-[#4a3321] shadow-[0_12px_30px_rgba(48,31,17,0.11)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#4a3321]/30 hover:bg-[#efe5d8]/68 hover:text-[#3d2b1d] hover:shadow-[0_18px_38px_rgba(48,31,17,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
   buttonClassName = "group relative flex h-11 w-11 items-center justify-center rounded-lg border border-[#6f4a2c]/20 bg-[#eadfce]/46 text-[#4a3321] shadow-[0_12px_30px_rgba(48,31,17,0.11)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#4a3321]/30 hover:bg-[#efe5d8]/68 hover:text-[#3d2b1d] hover:shadow-[0_18px_38px_rgba(48,31,17,0.15)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#6f4a2c]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#b8a690]",
 }) {

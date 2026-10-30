@@ -1,6 +1,7 @@
 import React from "react";
 import PageBackdrop from "../components/PageBackdrop";
 import SiteHeader from "../components/SiteHeader";
+import ProjectGrid from "../components/ProjectGrid";
 
 export default function Videos() {
   const videos = [
@@ -26,29 +27,24 @@ export default function Videos() {
           Music Videos
         </h1>
 
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-          {videos.map((video, idx) => (
-            <div key={idx} className="flex flex-col items-center gap-4">
-              <div className="aspect-video w-full overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]">
-                <iframe
-                  className="h-full w-full"
-                  src={video.url}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-
-              <h2
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-4 text-center text-lg uppercase tracking-[0.18em] text-[#4a3321] sm:text-xl md:text-2xl"
-              >
-                {video.title}
-              </h2>
-            </div>
-          ))}
-        </div>
+        <ProjectGrid
+          projects={videos}
+          getTitle={video => video.title}
+          getCategory={() => "Music Video"}
+          className="w-full sm:grid-cols-2 lg:grid-cols-3"
+          mediaAspectClass="aspect-video"
+          renderMedia={video => (
+            <iframe
+              className="h-full w-full"
+              src={video.url}
+              title={video.title}
+              loading="lazy"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          )}
+        />
       </main>
 
       <footer

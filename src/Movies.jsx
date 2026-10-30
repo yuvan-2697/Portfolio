@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
+import ProjectGrid from "./components/ProjectGrid";
 
 import kali from "./assets/kali.png";
 import boo from "./assets/boo.png";
@@ -104,49 +105,15 @@ export default function Movies() {
 
       </div>
 
-      {/* GRID */}
-      <div className="grid grid-cols-1 gap-10 max-w-[1700px] mx-auto px-6 pb-20 md:grid-cols-3">
-
-        {filteredProjects.map((proj) => (
-
-          <div
-            key={proj.title}
-            className="relative group flex flex-col items-center cursor-pointer"
-            onClick={() => {
-              setCurrentVideo(proj.video);
-              setVideoOpen(true);
-            }}
-          >
-
-            <img
-              src={proj.image}
-              alt={proj.title}
-              className="h-[320px] w-auto max-w-full object-contain sm:h-[420px]"
-            />
-
-            <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition duration-300 group-hover:opacity-100">
-
-              <p
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="text-white text-lg uppercase tracking-widest"
-              >
-                {proj.description}
-              </p>
-
-            </div>
-
-            <h3
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
-            >
-              {proj.title}
-            </h3>
-
-          </div>
-
-        ))}
-
-      </div>
+      <ProjectGrid
+        projects={filteredProjects}
+        className="mx-auto w-full max-w-[1700px] px-6 pb-20 md:grid-cols-3"
+        mediaAspectClass="aspect-[16/10]"
+        onProjectClick={proj => {
+          setCurrentVideo(proj.video);
+          setVideoOpen(true);
+        }}
+      />
 
       {/* VIDEO POPUP */}
       {videoOpen && (

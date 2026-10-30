@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
+import ProjectGrid from "./components/ProjectGrid";
 
 import cg from "./assets/cg.png";
 import nalli from "./assets/nalli.png";
@@ -51,6 +52,9 @@ export default function Commercials() {
       title: "ECHOS ABOVE",
       image: echoes,
       description: "Associate Cinematographer",
+      mediaFit: "contain",
+      mediaClassName: "rounded-full",
+      mediaBackground: "bg-[#9eb9cf]",
       instagramLinks: [
         "https://www.instagram.com/reel/DWluUBCER0M/",
         "https://www.instagram.com/reel/DWtdt-iEd9C/",
@@ -121,59 +125,23 @@ export default function Commercials() {
 
       </div>
 
-      {/* GRID (MATCHES WEBSERIES) */}
-      <div className="relative z-10 grid grid-cols-1 gap-14 max-w-[1748px] mx-auto px-6 pb-20 md:grid-cols-3">
+      <ProjectGrid
+        projects={filteredProjects}
+        className="relative z-10 mx-auto w-full max-w-[1748px] px-6 pb-20 md:grid-cols-3"
+        mediaAspectClass="aspect-[16/10]"
+        onProjectClick={proj => {
+          if (proj.instagramLinks) {
+            setInstagramList(proj.instagramLinks);
+            setInstagramIndex(0);
+            setInstagramOpen(true);
+            return;
+          }
 
-        {filteredProjects.map(proj => (
-
-          <div
-            key={proj.title}
-            className="group flex flex-col items-center cursor-pointer"
-            onClick={() => {
-              if (proj.instagramLinks) {
-                setInstagramList(proj.instagramLinks);
-                setInstagramIndex(0);
-                setInstagramOpen(true);
-                return;
-              }
-
-              setVideoList(proj.videos);
-              setVideoIndex(0);
-              setVideoOpen(true);
-            }}
-          >
-
-            <div className={`relative aspect-square w-[95%] max-w-[560px] ${proj.title === "ECHOS ABOVE" ? "bg-[#9eb9cf]" : ""}`}>
-              <img
-                src={proj.image}
-                alt={proj.title}
-                className={`block h-full w-full object-contain ${proj.title === "ECHOS ABOVE" ? "rounded-full" : ""}`}
-              />
-
-              <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition duration-300 group-hover:opacity-100">
-
-              <p
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="text-white text-lg uppercase tracking-widest"
-              >
-                {proj.description}
-              </p>
-
-              </div>
-            </div>
-
-            <h3
-              style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
-            >
-              {proj.title}
-            </h3>
-
-          </div>
-
-        ))}
-
-      </div>
+          setVideoList(proj.videos);
+          setVideoIndex(0);
+          setVideoOpen(true);
+        }}
+      />
 
       {/* VIDEO POPUP */}
       {videoOpen && (
@@ -253,7 +221,7 @@ export default function Commercials() {
               <img
                 src={echoes}
                 alt="Echos Above reel preview"
-                className="h-full aspect-square rounded-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                className="h-full aspect-square rounded-full object-contain"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 transition group-hover:bg-black/50">
                 <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/80 bg-black/30 text-2xl text-white transition group-hover:scale-105">

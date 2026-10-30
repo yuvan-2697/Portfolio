@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PageBackdrop from "./components/PageBackdrop";
 import SiteHeader from "./components/SiteHeader";
+import ProjectGrid from "./components/ProjectGrid";
 import kaipulla from "./assets/kaipulla1.jpeg";
 import paalMazhai from "./assets/paal.jpeg";
 import standup from "./assets/sa.png";
@@ -75,7 +76,7 @@ export default function NonCinema() {
       <PageBackdrop />
 
       {/* HEADER */}
-      <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-8 py-6 flex justify-between items-center" />
+      <SiteHeader headerClassName="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center" />
 
       {/* MAIN */}
       <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">
@@ -118,67 +119,23 @@ export default function NonCinema() {
 
         <div className="mb-10 h-px w-24 bg-[#8f6945]/55" />
 
-        {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 w-full max-w-[1700px]">
+        <ProjectGrid
+          projects={filteredProjects}
+          getCategory={project => project.role}
+          className="w-full max-w-[1700px] md:grid-cols-3"
+          mediaAspectClass="aspect-[16/10]"
+          onProjectClick={project => {
+            if (project.link) {
+              window.open(project.link, "_blank", "noopener,noreferrer");
+              return;
+            }
 
-          {filteredProjects.map((project, index) => (
-
-            <div
-              key={index}
-              className="group flex flex-col items-center cursor-pointer"
-              onClick={() => {
-                if (project.link) {
-                  window.open(project.link, "_blank", "noopener,noreferrer");
-                  return;
-                }
-
-                if (project.video) {
-                  setCurrentVideo(project.video);
-                  setVideoOpen(true);
-                }
-              }}
-            >
-
-            <div
-              className="relative aspect-square w-[95%] max-w-[560px]"
-            >
-
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="block h-full w-full object-contain transition duration-500"
-                />
-
-                <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition group-hover:opacity-100">
-                  <h2
-                    style={{ fontFamily: "'Montserrat', sans-serif" }}
-                    className="text-white text-2xl tracking-widest uppercase"
-                  >
-                    {project.title}
-                  </h2>
-                </div>
-
-              </div>
-
-              <h3
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
-              >
-                {project.subtitle}
-              </h3>
-
-              <p
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className="mt-2 text-center text-xs uppercase tracking-[0.24em] text-[#7f6246] sm:text-sm"
-              >
-                {project.role}
-              </p>
-
-            </div>
-
-          ))}
-
-        </div>
+            if (project.video) {
+              setCurrentVideo(project.video);
+              setVideoOpen(true);
+            }
+          }}
+        />
 
       </main>
 

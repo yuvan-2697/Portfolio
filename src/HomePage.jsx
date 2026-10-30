@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FiCopy, FiMail, FiShare2 } from "react-icons/fi";
 import { FaFacebookF, FaPinterestP, FaTwitter } from "react-icons/fa";
 import SiteHeader from "./components/SiteHeader";
+import ProjectGrid from "./components/ProjectGrid";
 
 import tea1 from "./assets/tea1.jpg";
 import tea2 from "./assets/tea2.jpg";
@@ -117,7 +118,7 @@ export default function Home() {
       <div className="portfolio-line-draw pointer-events-none absolute left-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:left-10 sm:h-32" />
       <div className="portfolio-line-draw pointer-events-none absolute right-6 top-28 h-24 w-px bg-[#3d2b1d]/14 sm:right-10 sm:h-32" />
 
-      <SiteHeader headerClassName="absolute top-0 left-0 w-full z-20 px-4 py-5 sm:px-8 sm:py-6 flex justify-between items-center" />
+      <SiteHeader headerClassName="fixed top-0 left-0 w-full z-50 px-4 py-5 sm:px-8 sm:py-6 flex justify-between items-center" />
 
       <main className="relative z-10 flex flex-col items-center px-4 pt-24 text-center sm:px-6 sm:pt-28">
         <section className="portfolio-rise mb-14 w-full max-w-6xl border border-[#6f4a2c]/14 bg-[linear-gradient(180deg,rgba(222,208,192,0.86),rgba(210,194,176,0.9))] px-5 py-8 shadow-[0_22px_45px_rgba(42,27,15,0.12),0_55px_120px_rgba(83,54,28,0.18)] sm:mb-20 sm:px-8 sm:py-12 md:px-12">
@@ -160,19 +161,19 @@ export default function Home() {
               </div>
               <Link
                 to="/movies"
-                className="mt-3 block text-[0.7rem] tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
+                className="mt-3 block text-xs tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
               >
                 Feature Films
               </Link>
               <Link
                 to="/webseries"
-                className="mt-2 block text-[0.7rem] tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
+                className="mt-2 block text-xs tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
               >
                 Webseries
               </Link>
               <Link
                 to="/commercials"
-                className="mt-2 block text-[0.7rem] tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
+                className="mt-2 block text-xs tracking-[0.22em] text-[#7f6246] transition hover:text-[#4a3321]"
               >
                 Commercials
               </Link>
@@ -180,53 +181,32 @@ export default function Home() {
           </div>
         </section>
 
-        <div className="grid w-full max-w-[1700px] grid-cols-1 gap-10 sm:gap-14 md:grid-cols-2">
-          {projects.map((project, index) => (
-            <div
-              id={`img-${index}`}
-              key={index}
-              className="portfolio-gallery-card group flex justify-center cursor-pointer"
-              style={{ animationDelay: `${Math.min(index * 55, 660)}ms` }}
-              onClick={() => {
-                if (project.video) {
-                  setCurrentVideo(project.video);
-                  setVideoOpen(true);
-                } else if (project.type === "dug") {
-                  setCurrentVideo("https://www.youtube.com/embed/l36QKGyqFwE");
-                  setVideoOpen(true);
-                }
-              }}
+        <ProjectGrid
+          projects={projects}
+          getId={(_, index) => `img-${index}`}
+          className="w-full max-w-[1700px] md:grid-cols-2"
+          getCardClassName={() => "portfolio-gallery-card"}
+          getCardStyle={(_, index) => ({ animationDelay: `${Math.min(index * 55, 660)}ms` })}
+          onProjectClick={project => {
+            if (project.video) {
+              setCurrentVideo(project.video);
+              setVideoOpen(true);
+            } else if (project.type === "dug") {
+              setCurrentVideo("https://www.youtube.com/embed/l36QKGyqFwE");
+              setVideoOpen(true);
+            }
+          }}
+          renderAction={(_, index) => (
+            <button
+              type="button"
+              aria-label={`Share project ${index + 1}`}
+              onClick={() => handleShare(index)}
+              className="absolute bottom-4 right-4 rounded-full bg-[#dcc8af]/92 p-2 opacity-0 transition group-hover:opacity-100 focus-visible:opacity-100"
             >
-              <div
-                className={
-                  project.fit === "gallery"
-                    ? "portfolio-gallery-frame relative aspect-[8/5] w-full overflow-hidden"
-                    : "portfolio-gallery-frame relative inline-block"
-                }
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className={
-                    project.fit === "gallery"
-                      ? "block h-full w-full object-cover"
-                      : "block h-auto w-full"
-                  }
-                />
-
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleShare(index);
-                  }}
-                  className="absolute bottom-4 right-4 rounded-full bg-[#dcc8af]/92 p-2 opacity-0 transition group-hover:opacity-100"
-                >
-                  <FiShare2 className="text-[#4a3321] text-sm" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+              <FiShare2 className="text-sm text-[#4a3321]" />
+            </button>
+          )}
+        />
       </main>
 
       {videoOpen && (

@@ -69,9 +69,9 @@ export default function About() {
           <img
             src={portrait}
             alt="Ribhu Sarma"
-            className={`mx-auto h-auto w-full max-w-[500px] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition-all duration-700 md:mx-0 ${
+            className={`mx-auto h-auto w-full max-w-[500px] object-contain shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition-all duration-700 md:mx-0 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            } hover:scale-105`}
+            }`}
           />
 
         </div>
