@@ -67,7 +67,7 @@ export default function WebSeries() {
 <div className="relative z-10 pt-28 px-4 sm:px-6 max-w-[1700px] mx-auto">
 
   {/* TITLE + FILTER ROW */}
-  <div className="flex flex-col items-center gap-6 mb-6 lg:relative lg:min-h-[220px] lg:justify-center">
+  <div className="mb-8 flex flex-col items-center gap-6">
 
     {/* TITLE (centered) */}
     <h1
@@ -77,27 +77,28 @@ export default function WebSeries() {
       Webseries
     </h1>
 
-    {/* FILTER (right side, aligned with title) */}
-    <div className="w-full max-w-md lg:absolute lg:right-0 lg:top-1/2 lg:w-[260px] lg:max-w-none lg:-translate-y-1/2">
+    {/* ROLE FILTER */}
+    <div className="flex w-full flex-col items-center gap-3">
 
       <h2
         style={{ fontFamily: "'Montserrat', sans-serif" }}
-        className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[#6f5740] lg:text-right"
+        className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6f5740]"
       >
         Filter by Role
       </h2>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+      <div className="flex w-full flex-wrap items-center justify-center gap-2">
       {roles.map(role => (
 
         <button
           key={role}
           onClick={() => setFilter(role)}
+          aria-pressed={filter === role}
           style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className={`w-full rounded-lg px-4 py-3 text-center text-sm transition sm:text-base lg:text-right ${
+          className={`min-h-10 rounded-md border px-4 py-2 text-xs font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a3321] sm:text-sm ${
             filter === role
-              ? "bg-[#4a3321] text-[#f4ede3]"
-              : "bg-[#d8c7b4] text-[#5c442f] hover:bg-[#ccb79f]"
+              ? "border-[#4a3321] bg-[#4a3321] text-[#f4ede3]"
+              : "border-[#8f6945]/35 bg-[#f4ede3]/35 text-[#5c442f] hover:bg-[#d8c7b4]/75"
           }`}
         >
           {role}
@@ -119,7 +120,7 @@ export default function WebSeries() {
 
       {/* PROJECT GRID */}
 
-      <div className="grid grid-cols-1 gap-10 max-w-6xl mx-auto px-4 pb-20 sm:px-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-10 max-w-[1700px] mx-auto px-6 pb-20 md:grid-cols-3">
 
         {filteredProjects.map(proj => (
 

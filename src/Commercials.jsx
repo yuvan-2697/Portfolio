@@ -6,6 +6,7 @@ import cg from "./assets/cg.png";
 import nalli from "./assets/nalli.png";
 import nn from "./assets/nalli2.png";
 import dug from "./assets/dug.png";
+import echoes from "./assets/echoes.jpeg";
 
 export default function Commercials() {
 
@@ -14,6 +15,9 @@ export default function Commercials() {
 
   const [videoList, setVideoList] = useState([]);
   const [videoIndex, setVideoIndex] = useState(0);
+  const [instagramList, setInstagramList] = useState([]);
+  const [instagramIndex, setInstagramIndex] = useState(0);
+  const [instagramOpen, setInstagramOpen] = useState(false);
 
   const projects = [
     {
@@ -42,6 +46,18 @@ export default function Commercials() {
       image: dug,
       description: "DOP",
       videos: ["https://www.youtube.com/embed/l36QKGyqFwE"]
+    },
+    {
+      title: "ECHOS ABOVE",
+      image: echoes,
+      description: "Associate Cinematographer",
+      instagramLinks: [
+        "https://www.instagram.com/reel/DWluUBCER0M/",
+        "https://www.instagram.com/reel/DWtdt-iEd9C/",
+        "https://www.instagram.com/reel/DW33GZDEUnp/",
+        "https://www.instagram.com/reel/DXCG8kKEeCL/",
+        "https://www.instagram.com/reel/DXO9Iy0kcNq/"
+      ]
     }
   ];
 
@@ -60,7 +76,7 @@ export default function Commercials() {
       {/* HEADING (MATCHES WEBSERIES) */}
       <div className="relative z-10 pt-28 px-4 sm:px-6 max-w-[1700px] mx-auto">
 
-        <div className="flex flex-col items-center gap-6 mb-6 lg:relative lg:min-h-[220px] lg:justify-center">
+        <div className="mb-8 flex flex-col items-center gap-6">
 
           <h1
             style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -69,26 +85,27 @@ export default function Commercials() {
             Commercials
           </h1>
 
-          {/* FILTER RIGHT */}
-          <div className="w-full max-w-md lg:absolute lg:right-0 lg:top-1/2 lg:w-[260px] lg:max-w-none lg:-translate-y-1/2">
+          {/* ROLE FILTER */}
+          <div className="flex w-full flex-col items-center gap-3">
 
             <h2
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mb-3 text-center text-xs font-semibold uppercase tracking-[0.25em] text-[#6f5740] lg:text-right"
+              className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6f5740]"
             >
               Filter by Role
             </h2>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="flex w-full flex-wrap items-center justify-center gap-2">
             {roles.map(role => (
               <button
                 key={role}
                 onClick={() => setFilter(role)}
+                aria-pressed={filter === role}
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                className={`w-full rounded-lg px-4 py-3 text-center text-sm transition sm:text-base lg:text-right ${
+                className={`min-h-10 rounded-md border px-4 py-2 text-xs font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a3321] sm:text-sm ${
                   filter === role
-                    ? "bg-[#4a3321] text-[#f4ede3]"
-                    : "bg-[#d8c7b4] text-[#5c442f] hover:bg-[#ccb79f]"
+                    ? "border-[#4a3321] bg-[#4a3321] text-[#f4ede3]"
+                    : "border-[#8f6945]/35 bg-[#f4ede3]/35 text-[#5c442f] hover:bg-[#d8c7b4]/75"
                 }`}
               >
                 {role}
@@ -105,27 +122,35 @@ export default function Commercials() {
       </div>
 
       {/* GRID (MATCHES WEBSERIES) */}
-      <div className="grid grid-cols-1 gap-10 max-w-6xl mx-auto px-4 pb-20 sm:px-6 md:grid-cols-2">
+      <div className="relative z-10 grid grid-cols-1 gap-14 max-w-[1748px] mx-auto px-6 pb-20 md:grid-cols-3">
 
         {filteredProjects.map(proj => (
 
           <div
             key={proj.title}
-            className="relative group cursor-pointer"
+            className="group flex flex-col items-center cursor-pointer"
             onClick={() => {
+              if (proj.instagramLinks) {
+                setInstagramList(proj.instagramLinks);
+                setInstagramIndex(0);
+                setInstagramOpen(true);
+                return;
+              }
+
               setVideoList(proj.videos);
               setVideoIndex(0);
               setVideoOpen(true);
             }}
           >
 
-            <img
-              src={proj.image}
-              alt={proj.title}
-              className="h-[320px] w-full object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105 sm:h-[420px]"
-            />
+            <div className={`relative aspect-square w-[95%] max-w-[560px] ${proj.title === "ECHOS ABOVE" ? "bg-[#9eb9cf]" : ""}`}>
+              <img
+                src={proj.image}
+                alt={proj.title}
+                className={`block h-full w-full object-contain ${proj.title === "ECHOS ABOVE" ? "rounded-full" : ""}`}
+              />
 
-            <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition duration-300 group-hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition duration-300 group-hover:opacity-100">
 
               <p
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
@@ -134,11 +159,12 @@ export default function Commercials() {
                 {proj.description}
               </p>
 
+              </div>
             </div>
 
             <h3
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              className="mt-4 text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
+              className="mt-4 text-center text-base uppercase tracking-[0.18em] text-[#4a3321] sm:text-lg sm:tracking-widest"
             >
               {proj.title}
             </h3>
@@ -190,6 +216,75 @@ export default function Commercials() {
               </div>
             )}
 
+          </div>
+        </div>
+      )}
+
+      {/* INSTAGRAM REELS VIEWER */}
+      {instagramOpen && (
+        <div
+          className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4"
+          onClick={() => setInstagramOpen(false)}
+        >
+          <div
+            className="w-[min(90vw,440px)] rounded-xl bg-[#241b15] p-5 text-[#f4ede3] shadow-2xl sm:p-6"
+            onClick={event => event.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs uppercase tracking-[0.22em] text-[#d8c7b4]">Commercials</p>
+                <h2 className="mt-1 text-sm font-semibold uppercase tracking-[0.18em]">Echos Above</h2>
+              </div>
+              <button
+                onClick={() => setInstagramOpen(false)}
+                aria-label="Close Echos Above viewer"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-xl transition hover:bg-white/20"
+              >
+                ×
+              </button>
+            </div>
+
+            <a
+              href={instagramList[instagramIndex]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex aspect-[3/2] items-center justify-center overflow-hidden rounded-lg bg-[#9eb9cf]"
+            >
+              <img
+                src={echoes}
+                alt="Echos Above reel preview"
+                className="h-full aspect-square rounded-full object-cover transition duration-300 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/35 transition group-hover:bg-black/50">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full border border-white/80 bg-black/30 text-2xl text-white transition group-hover:scale-105">
+                  ▶
+                </span>
+                <span className="mt-3 text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                  Watch on Instagram
+                </span>
+              </div>
+              <span className="absolute bottom-3 right-3 rounded-full bg-black/60 px-3 py-1 text-[11px] uppercase tracking-widest text-white">
+                Reel {instagramIndex + 1} / {instagramList.length}
+              </span>
+            </a>
+
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button
+                onClick={() => setInstagramIndex((instagramIndex - 1 + instagramList.length) % instagramList.length)}
+                className="rounded-md bg-white/10 px-4 py-2 text-sm transition hover:bg-white/20"
+              >
+                Previous
+              </button>
+              <span className="text-xs uppercase tracking-widest text-[#d8c7b4]">
+                {instagramIndex + 1} / {instagramList.length}
+              </span>
+              <button
+                onClick={() => setInstagramIndex((instagramIndex + 1) % instagramList.length)}
+                className="rounded-md bg-white/10 px-4 py-2 text-sm transition hover:bg-white/20"
+              >
+                Next
+              </button>
+            </div>
           </div>
         </div>
       )}

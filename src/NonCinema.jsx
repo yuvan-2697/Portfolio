@@ -6,8 +6,10 @@ import paalMazhai from "./assets/paal.jpeg";
 import standup from "./assets/sa.png";
 import thePaiyen from "./assets/pai.png";
 import hyderabadGig from "./assets/hq721.jpg";
+import modharathri from "./assets/modharathri.jpeg";
 
 export default function NonCinema() {
+  const [filter, setFilter] = useState("All");
 
   // ✅ NEW (video popup)
   const [videoOpen, setVideoOpen] = useState(false);
@@ -53,7 +55,19 @@ export default function NonCinema() {
       fit: "square",
       link: "https://youtube.com/playlist?list=PLGjAbxgreXJwhBta2dH0gwdBD54bryNKV&si=yfb6tTRAf1jebYm9"
     },
+    {
+      image: modharathri,
+      title: "Modha rathri Promo",
+      subtitle: "Modha rathri Promo",
+      role: "Associate DOP",
+      fit: "natural",
+      link: "https://youtu.be/C9fSuoVoluY?si=Qv4D63O_6UkJ-8Ae"
+    },
   ];
+
+  const roles = ["All", "Associate DOP", "Assistant DOP", "DOP"];
+  const filteredProjects =
+    filter === "All" ? projects : projects.filter(project => project.role === filter);
 
   return (
 
@@ -66,19 +80,48 @@ export default function NonCinema() {
       {/* MAIN */}
       <main className="relative z-10 flex flex-col items-center text-center px-6 pt-28">
 
-        <h1
-          style={{ fontFamily: "'Montserrat', sans-serif" }}
-          className="mb-6 text-4xl uppercase tracking-[0.2em] sm:text-6xl md:text-8xl"
-        >
-          Non Cinema
-        </h1>
+        <div className="mb-8 flex w-full flex-col items-center gap-6">
+          <h1
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            className="text-4xl uppercase tracking-[0.2em] sm:text-6xl md:text-8xl"
+          >
+            Non Cinema
+          </h1>
+
+          <div className="flex w-full flex-col items-center gap-3">
+            <h2
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+              className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-[#6f5740]"
+            >
+              Filter by Role
+            </h2>
+
+            <div className="flex w-full flex-wrap items-center justify-center gap-2">
+              {roles.map(role => (
+                <button
+                  key={role}
+                  onClick={() => setFilter(role)}
+                  aria-pressed={filter === role}
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                  className={`min-h-10 rounded-md border px-4 py-2 text-xs font-medium transition duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4a3321] sm:text-sm ${
+                    filter === role
+                      ? "border-[#4a3321] bg-[#4a3321] text-[#f4ede3]"
+                      : "border-[#8f6945]/35 bg-[#f4ede3]/35 text-[#5c442f] hover:bg-[#d8c7b4]/75"
+                  }`}
+                >
+                  {role}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
 
         <div className="mb-10 h-px w-24 bg-[#8f6945]/55" />
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 w-full max-w-[1700px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-14 w-full max-w-[1700px]">
 
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
 
             <div
               key={index}
@@ -97,25 +140,13 @@ export default function NonCinema() {
             >
 
             <div
-              className={
-                project.fit === "square"
-                  ? "relative h-[560px] w-[95%] max-w-[560px] overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]"
-                  : project.fit === "wide"
-                    ? "relative aspect-[16/9] w-[95%] overflow-hidden shadow-[0_24px_55px_rgba(62,43,19,0.14)]"
-                  : "relative inline-block"
-              }
+              className="relative aspect-square w-[95%] max-w-[560px]"
             >
 
                 <img
                   src={project.image}
                   alt={project.title}
-                  className={
-                    project.fit === "square"
-                      ? "h-full w-full object-cover object-[78%_center] transition duration-500 group-hover:scale-105"
-                      : project.fit === "wide"
-                        ? "h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                      : "mx-auto h-[560px] w-[95%] object-cover shadow-[0_24px_55px_rgba(62,43,19,0.14)] transition duration-500 group-hover:scale-105"
-                  }
+                  className="block h-full w-full object-contain transition duration-500"
                 />
 
                 <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(35,25,16,0.14),rgba(35,25,16,0.62))] opacity-0 transition group-hover:opacity-100">
